@@ -1,11 +1,7 @@
-import React from "react";
+import React from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      Temiz
-    </div>
-  );
+  return <div className="App">Temiz</div>;
 }
 
 export default App;
