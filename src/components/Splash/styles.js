@@ -9,7 +9,7 @@ const loadingAnimation = keyframes`
   }
 `;
 
-export const SplashScreen = styled.div`
+export const Splash = styled.div`
   height: 100vh;
   background-color: black;
   padding: 7px 33px;

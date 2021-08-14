@@ -1,22 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useState, useContext } from 'react';
 import useSound from 'use-sound';
 import AccountImage from '../../assets/images/login-icon.webp';
-import * as S from './styles';
+import * as Styled from './styles';
 import OpeningMusic from '../../assets/audios/opening.ogg';
+import { UserContext } from '../../contexts/UserContext';
 
-const LoginAccount = ({ guest, setUsername }) => {
-  const inputEl = useRef(null);
+const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
+  const { user, setUser } = useContext(UserContext);
+  const [username, setUsername] = useState(user.username);
   const [play] = useSound(OpeningMusic);
-
   const handleAccountClick = (e) => {
     e.preventDefault();
 
-    if (e.currentTarget.name === 'guest') {
-      setUsername('Guest');
+    if (isGuest) {
+      setUser({
+        ...user,
+        username: 'Guest',
+      });
+      setIsLoggedIn(true);
       play();
-    } else if (inputEl.current.value) {
-      setUsername(inputEl.current.value);
+    } else if (username) {
+      setUser({
+        ...user,
+        username,
+      });
       play();
+      setIsLoggedIn(true);
     }
   };
 
@@ -24,20 +33,32 @@ const LoginAccount = ({ guest, setUsername }) => {
     e.stopPropagation();
   };
 
+  const handleTextChange = (e) => {
+    setUsername(e.target.value);
+  };
+
   return (
-    <S.LoginAccountButton name={guest ? 'guest' : ''} onClick={handleAccountClick}>
-      <S.AccountAvatar src={AccountImage} alt="" />
-      {guest ? (
+    <Styled.LoginAccountButton
+      $isGuest={isGuest}
+      $isUsernameWritten={username}
+      onClick={handleAccountClick}
+    >
+      <Styled.AccountAvatar src={AccountImage} alt="" />
+      {isGuest ? (
         <span>Guest</span>
       ) : (
         <input
           type="text"
           placeholder="Or write your username"
-          ref={inputEl}
+          value={username}
           onClick={handleInputClick}
+          onChange={handleTextChange}
+          onKeyDown={(e) =>
+            e.key === 'Enter' && handleAccountClick(e)
+          }
         />
       )}
-    </S.LoginAccountButton>
+    </Styled.LoginAccountButton>
   );
 };
 

@@ -4,7 +4,6 @@ export const LoginScreen = styled.div`
   height: 100vh;
   overflow: hidden;
   color: white;
-
   header {
     height: 90px;
     background-color: #004da3;
@@ -39,7 +38,12 @@ export const LoginScreen = styled.div`
     padding: 0 50px;
     border-top: 3px solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(90deg, #004da3 0%, #f09644 50%, #004da3 100%);
+    border-image-source: linear-gradient(
+      90deg,
+      #004da3 0%,
+      #f09644 50%,
+      #004da3 100%
+    );
     display: flex;
     justify-content: space-between;
     align-items: center;

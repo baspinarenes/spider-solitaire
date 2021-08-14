@@ -1,33 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import LoginScreen from './views/LoginScreen';
-import SplashScreen from './views/SplashScreen';
+import React, { useState } from 'react';
+import IntroductionScreen from './views/IntroductionScreen';
 import DesktopScreen from './views/DesktopScreen/index';
+import UserContextProvider from './contexts/UserContext';
 
 function App() {
-  const [isOnSplash, setIsOnSplash] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const splashTimer = setTimeout(() => {
-      setIsOnSplash(false);
-    }, 5000);
-
-    return () => {
-      clearTimeout(splashTimer);
-    };
-  }, []);
-
-  let renderedPage;
-
-  if (isLoggedIn) {
-    renderedPage = <DesktopScreen />;
-  } else if (isOnSplash) {
-    renderedPage = <SplashScreen />;
-  } else {
-    renderedPage = <LoginScreen setIsLoggedIn={setIsLoggedIn} />;
-  }
-
-  return <div id="App">{renderedPage}</div>;
+  return (
+    <UserContextProvider>
+      <div id="app">
+        {isLoggedIn ? (
+          <DesktopScreen />
+        ) : (
+          <IntroductionScreen setIsLoggedIn={setIsLoggedIn} />
+        )}
+      </div>
+    </UserContextProvider>
+  );
 }
 
 export default App;

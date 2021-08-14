@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CanNotCursor from '../../assets/cursors/cursor-cannot.cur';
 
 export const AccountAvatar = styled.img`
   height: 60px;
@@ -19,6 +20,9 @@ export const LoginAccountButton = styled.button`
   &:hover {
     opacity: 1;
     transition: opacity 400ms;
+
+    cursor: ${(props) =>
+      !props.$isGuest && !props.$isUsernameWritten && `url(${CanNotCursor}), pointer`};
 
     img {
       border-color: yellow;
