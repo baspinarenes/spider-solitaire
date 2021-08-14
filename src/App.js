@@ -5,7 +5,7 @@ import DesktopScreen from './views/DesktopScreen/index';
 
 function App() {
   const [isOnSplash, setIsOnSplash] = useState(true);
-  const [username, setUsername] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const splashTimer = setTimeout(() => {
@@ -19,12 +19,12 @@ function App() {
 
   let renderedPage;
 
-  if (username) {
+  if (isLoggedIn) {
     renderedPage = <DesktopScreen />;
   } else if (isOnSplash) {
     renderedPage = <SplashScreen />;
   } else {
-    renderedPage = <LoginScreen setUsername={setUsername} />;
+    renderedPage = <LoginScreen setIsLoggedIn={setIsLoggedIn} />;
   }
 
   return <div id="App">{renderedPage}</div>;

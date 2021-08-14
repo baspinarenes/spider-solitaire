@@ -16,6 +16,7 @@ export const SplashScreen = styled.div`
   color: white;
   font-size: 1rem;
   font-family: 'MS Shell Dlg 2';
+  cursor: none;
 
   main {
     height: calc(100vh - 60px - 14px);

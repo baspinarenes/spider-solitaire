@@ -10,12 +10,13 @@ const LoginAccount = ({ guest, setUsername }) => {
 
   const handleAccountClick = (e) => {
     e.preventDefault();
-    play();
 
     if (e.currentTarget.name === 'guest') {
       setUsername('Guest');
-    } else {
+      play();
+    } else if (inputEl.current.value) {
       setUsername(inputEl.current.value);
+      play();
     }
   };
 

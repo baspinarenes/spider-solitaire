@@ -6,7 +6,7 @@ import WindowsXPLogo2 from '../../assets/images/win-xp-logo2.png';
 import LoginAccount from '../../components/LoginAccount';
 import ShutdownSound from '../../assets/audios/shutdown.ogg';
 
-const LoginScreen = ({ setUsername }) => {
+const LoginScreen = ({ setIsLoggedIn }) => {
   const [play] = useSound(ShutdownSound);
 
   return (
@@ -18,8 +18,8 @@ const LoginScreen = ({ setUsername }) => {
           <span>To begin, select your user</span>
         </S.LoginDescribe>
         <S.Accounts>
-          <LoginAccount guest setUsername={setUsername} />
-          <LoginAccount setUsername={setUsername} />
+          <LoginAccount guest setUsername={setIsLoggedIn} />
+          <LoginAccount setUsername={setIsLoggedIn} />
         </S.Accounts>
       </main>
       <footer>
