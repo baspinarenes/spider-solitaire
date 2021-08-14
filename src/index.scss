@@ -9,6 +9,13 @@
 
 body {
   cursor: url(./assets/cursors/cursor-normal.cur), auto;
+  overflow: hidden;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  color: white;
 }
 
 button:hover,

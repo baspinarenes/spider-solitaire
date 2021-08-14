@@ -102,11 +102,6 @@ export const ShutdownButton = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
-  text-decoration: none;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
 
   img {
     width: 35px;

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import useSound from 'use-sound';
-import AccountImage from '../../assets/images/login-icon.webp';
+import AccountImage from '../../assets/images/account-image.webp';
 import * as Styled from './styles';
 import OpeningMusic from '../../assets/audios/opening.ogg';
 import { UserContext } from '../../contexts/UserContext';
@@ -8,7 +8,7 @@ import { UserContext } from '../../contexts/UserContext';
 const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
   const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState(user.username);
-  const [play] = useSound(OpeningMusic);
+  const [play] = useSound(OpeningMusic, { volume: 0.15 });
   const handleAccountClick = (e) => {
     e.preventDefault();
 

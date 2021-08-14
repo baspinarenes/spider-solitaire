@@ -12,8 +12,6 @@ export const LoginAccountButton = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
-  background: transparent;
-  border: 0;
   opacity: 0.6;
   color: white;
 
@@ -22,7 +20,9 @@ export const LoginAccountButton = styled.button`
     transition: opacity 400ms;
 
     cursor: ${(props) =>
-      !props.$isGuest && !props.$isUsernameWritten && `url(${CanNotCursor}), pointer`};
+      !props.$isGuest &&
+      !props.$isUsernameWritten &&
+      `url(${CanNotCursor}), pointer`};
 
     img {
       border-color: yellow;

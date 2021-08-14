@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import React from 'react';
+import SolitaireIcon from '../../assets/images/solitaire-icon.webp';
+import * as Styled from './styles';
+import Taskbar from '../../components/Taskbar/index';
 
-// Burada LocalStorage vs bir şey yapmalıyım.
-
-const DesktopScreen = () => {
-  const { user } = useContext(UserContext);
-  console.log(user);
-  return (
-    <div id="desktop-screen">
-      <p>{user?.username}</p>
-    </div>
-  );
-};
+const DesktopScreen = () => (
+  <Styled.Desktop>
+    <Styled.ProgramContainer>
+      <Styled.Program>
+        <img src={SolitaireIcon} alt="" width="40" height="40" />
+        <span>Spider Solitaire</span>
+      </Styled.Program>
+    </Styled.ProgramContainer>
+    <Taskbar />
+  </Styled.Desktop>
+);
 
 export default DesktopScreen;
