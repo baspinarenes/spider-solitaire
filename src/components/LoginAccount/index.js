@@ -50,7 +50,7 @@ const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
         <input
           type="text"
           placeholder="Or write your username"
-          value={username}
+          value={username === 'Guest' ? '' : username}
           onClick={handleInputClick}
           onChange={handleTextChange}
           onKeyDown={(e) =>

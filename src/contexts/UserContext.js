@@ -12,7 +12,10 @@ const UserContextProvider = (props) => {
   useEffect(() => {
     const sessionStoragedUser = sessionStorage.getItem('user');
 
-    if (sessionStoragedUser) {
+    if (
+      sessionStoragedUser &&
+      sessionStoragedUser.username !== 'Guest'
+    ) {
       setUser(JSON.parse(sessionStoragedUser));
     }
   }, []);

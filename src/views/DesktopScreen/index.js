@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SolitaireIcon from '../../assets/images/solitaire-icon.webp';
 import * as Styled from './styles';
 import Taskbar from '../../components/Taskbar/index';
+import SolitaireGame from '../SolitaireGame/index';
 
 const DesktopScreen = () => {
   const [isSolitaireActive, setIsSolitaireActive] = useState(false);
@@ -25,7 +26,11 @@ const DesktopScreen = () => {
               <span>Spider Solitaire</span>
             </Styled.Program>
           </Styled.ProgramList>
-        ) : null}
+        ) : (
+          <SolitaireGame
+            setIsSolitaireActive={setIsSolitaireActive}
+          />
+        )}
       </Styled.ProgramContainer>
       <Taskbar isSolitaireActive={isSolitaireActive} />
     </Styled.Desktop>

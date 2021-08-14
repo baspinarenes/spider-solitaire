@@ -44,7 +44,9 @@ export const Task = styled.button`
   padding: 4px 8px;
   height: 60%;
   border-radius: 2px;
-  width: 150px;
+  min-width: 100px;
+  width: 40%;
+  max-width: 120px;
   background-color: rgb(60, 129, 243);
   box-shadow: rgb(0 0 0 / 20%) 1px 0px 1px,
     rgb(255 255 255 / 30%) 1px 1px 1px inset;
