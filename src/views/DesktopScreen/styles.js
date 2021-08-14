@@ -10,11 +10,14 @@ export const ProgramContainer = styled.main`
   padding: 40px;
   height: calc(100vh - 42px);
   background-position: center center;
+  background-image: url(${XpBackground});
+`;
+
+export const ProgramList = styled.main`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 15px;
-  background-image: url(${XpBackground});
 `;
 
 export const Program = styled.button`
