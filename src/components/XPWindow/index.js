@@ -19,7 +19,7 @@ const XPWindow = (props) => {
       </Styled.TitleBar>
       <WindowMenu />
 
-      <div className="window-body">{children}</div>
+      <Styled.WindowBody>{children}</Styled.WindowBody>
     </Styled.Window>
   );
 };

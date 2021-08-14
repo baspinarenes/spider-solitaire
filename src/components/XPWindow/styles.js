@@ -47,3 +47,8 @@ export const CloseButton = styled.button`
     background-image: url(${CloseActiveSVG});
   }
 `;
+
+export const WindowBody = styled.div`
+  height: 100%;
+  width: 100%;
+`;
