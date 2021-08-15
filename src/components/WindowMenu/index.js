@@ -2,8 +2,6 @@ import React from 'react';
 import * as Styled from './styles';
 
 const WindowMenu = () => {
-  console.log('sdadas');
-
   return (
     <Styled.Menu>
       <Styled.MenuItem>

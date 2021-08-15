@@ -13,7 +13,7 @@ const XPWindow = (props) => {
   return (
     <Styled.Window>
       <Styled.TitleBar>
-        <img src={SolitaireIcon} alt="" />
+        <img src={SolitaireIcon} alt="solitaire icon" />
         <span>Spider Solitaire</span>
         <Styled.CloseButton onClick={handleClose} />
       </Styled.TitleBar>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Taskbar = styled.section`
   display: flex;
-  height: 42px;
+  height: 35px;
   background: linear-gradient(
     rgb(31, 47, 134) 0px,
     rgb(49, 101, 196) 3%,
@@ -67,7 +67,7 @@ export const Task = styled.button`
 export const Toolbar = styled.div`
   color: white;
   width: fit-content;
-  padding: 4px 20px 0 10px;
+  padding: 4px 15px 0 10px;
   display: flex;
   font-size: 0.85rem;
   gap: 5px;

@@ -19,8 +19,8 @@ const Taskbar = (props) => {
         <img
           src={XpStartButton}
           alt="winxp start"
-          height="42"
-          width="130"
+          height="35"
+          width="110"
         />
       </button>
       <Styled.TaskList>

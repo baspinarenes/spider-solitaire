@@ -4,8 +4,6 @@ import WindowsXPLogo from '../../assets/images/win-xp-logo.webp';
 import MicrosoftLogo from '../../assets/images/microsoft-logo.webp';
 
 const Splash = () => {
-  console.log('şimdilik dursun');
-
   return (
     <Styled.Splash>
       <main>

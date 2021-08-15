@@ -10,7 +10,7 @@ export const Desktop = styled.div`
 `;
 
 export const ProgramContainer = styled.main`
-  height: calc(100vh - 42px);
+  height: calc(100vh - 35px);
 `;
 
 export const ProgramList = styled.main`

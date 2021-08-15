@@ -4,9 +4,11 @@ import CloseHoverSVG from '../../assets/images/close-hover.svg';
 import CloseActiveSVG from '../../assets/images/close-active.svg';
 
 export const Window = styled.div`
-  width: 100%;
   height: 100%;
   background-color: white;
+  display: grid;
+  grid-template-rows: 30px 20px 1fr;
+  grid-template-columns: 100%;
 `;
 
 export const TitleBar = styled.div`
@@ -25,8 +27,8 @@ export const TitleBar = styled.div`
   font-size: 13px;
   padding: 6px;
   color: white;
-  height: 30px;
   display: flex;
+  align-items: center;
 
   img {
     height: 100%;
@@ -35,9 +37,10 @@ export const TitleBar = styled.div`
 
 export const CloseButton = styled.button`
   margin-left: auto;
-  height: 20px;
-  width: 20px;
+  width: 23px;
+  height: 23px;
   background-image: url(${CloseSVG});
+  background-repeat: no-repeat;
 
   &:hover {
     background-image: url(${CloseHoverSVG});
@@ -48,7 +51,4 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const WindowBody = styled.div`
-  height: 100%;
-  width: 100%;
-`;
+export const WindowBody = styled.div``;
