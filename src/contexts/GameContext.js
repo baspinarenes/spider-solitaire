@@ -24,6 +24,12 @@ const GameContextProvider = (props) => {
     dealDeck5: [],
   });
 
+  const [isAnyDragging, setIsAnyDragging] = useState(false);
+  const [selectedCards, setSelectedCards] = useState({
+    deckId: '',
+    items: [],
+  });
+
   useEffect(() => {
     setCardDecks(getRandomDecks());
   }, []);
@@ -33,6 +39,10 @@ const GameContextProvider = (props) => {
       value={{
         cardDecks,
         setCardDecks,
+        isAnyDragging,
+        setIsAnyDragging,
+        selectedCards,
+        setSelectedCards,
       }}
     >
       {children}

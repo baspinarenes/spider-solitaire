@@ -12,7 +12,11 @@ const DeckArea = () => {
       {Array.from({ length: 10 }, (_, i) => i + 1).map((id) => (
         <Droppable key={`deck${id}`} droppableId={`deck${id}`}>
           {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              style={{ height: 'fit-content' }}
+            >
               <CardDeck deckId={id} deck={cardDecks[`deck${id}`]} />
               {provided.placeholder}
             </div>

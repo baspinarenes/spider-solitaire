@@ -45,22 +45,41 @@ export const shuffle = (array) => {
   return copyArray;
 };
 
-export const moveOneCard = (
-  cardDecks,
-  sourceDeckId,
-  destinationDeckId
-) => {
-  const cardDecksCopy = { ...cardDecks };
-  cardDecksCopy[destinationDeckId].cards.push(
-    cardDecksCopy[sourceDeckId].cards.pop()
-  );
+export const moveCards = (cardDecks, source, destination) => {
+  const sourceCardIndex = source.index;
+  const sourceDeckId = source.droppableId;
+  const sourceDeck = { ...cardDecks[sourceDeckId] };
 
-  if (cardDecksCopy[sourceDeckId].visibleCardCount !== 1) {
-    cardDecksCopy[sourceDeckId].visibleCardCount -= 1;
+  const destinationCardIndex = destination.index;
+  const destinationDeckId = destination.droppableId;
+  const destinationDeck = { ...cardDecks[destinationDeckId] };
+
+  const selectedCardList = sourceDeck.cards.splice(sourceCardIndex);
+  const parentCardNo =
+    destinationDeck.cards[destinationCardIndex - 1];
+
+  const isNextCard =
+    destinationCardIndex === 1 ||
+    selectedCardList[0] === parentCardNo + 1;
+
+  if (isNextCard) {
+    destinationDeck.cards.push(...selectedCardList);
+
+    if (sourceDeck.visibleCardCount === selectedCardList.length) {
+      sourceDeck.visibleCardCount = 1;
+    } else {
+      sourceDeck.visibleCardCount -= selectedCardList.length;
+    }
+    destinationDeck.visibleCardCount += selectedCardList.length;
+  } else {
+    sourceDeck.cards.push(...selectedCardList);
   }
-  cardDecksCopy[destinationDeckId].visibleCardCount += 1;
 
-  return cardDecksCopy;
+  return {
+    ...cardDecks,
+    [sourceDeckId]: sourceDeck,
+    [destinationDeckId]: destinationDeck,
+  };
 };
 
 export const getRandomDecks = () => {

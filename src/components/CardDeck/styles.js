@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Deck = styled.div`
   display: grid;
-  grid-template-rows: repeat(13, 17px);
+  grid-template-rows: repeat(20, 17px);
   max-width: 71px;
 `;
 
