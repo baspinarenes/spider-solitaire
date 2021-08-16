@@ -5,7 +5,25 @@ import * as Styled from './styles';
 
 const CardDeck = React.forwardRef((props, ref) => {
   const { deckId, deck } = props;
-  console.log(deck);
+
+  function getStyle(style, snapshot) {
+    /* 
+    This function overrides the default gliding behavior of the react-beautiful-dnd 
+    package when the drag is above the other draggable object.
+    */
+
+    if (snapshot.isDragging) {
+      // We do not apply it to the being dragged object so that the drag behavior can continue.
+      return style;
+    }
+
+    return {
+      ...style,
+      // We ovveride the "translate(... px)" that performs the sliding behavior as "none".
+      transform: 'none',
+    };
+  }
+
   return (
     <Styled.Deck ref={ref}>
       {deck.length !== 0 &&
@@ -20,14 +38,18 @@ const CardDeck = React.forwardRef((props, ref) => {
           ) : (
             <Draggable
               key={`deck${deckId}${id}`}
-              draggableId={`deck${deckId}${id}${id}`}
+              draggableId={`deck${deckId}${id}`}
               index={index}
             >
-              {(provided) => (
+              {(provided, snapshot) => (
                 <div
                   ref={provided.innerRef}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
+                  style={getStyle(
+                    provided.draggableProps.style,
+                    snapshot
+                  )}
                 >
                   <Card deckId={deckId} cardId={id} />
                 </div>
@@ -39,4 +61,4 @@ const CardDeck = React.forwardRef((props, ref) => {
   );
 });
 
-export default CardDeck;
+export default React.memo(CardDeck);

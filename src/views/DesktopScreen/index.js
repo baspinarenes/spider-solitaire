@@ -3,6 +3,7 @@ import SolitaireGame from '../SolitaireGame';
 import Taskbar from '../../components/Taskbar';
 import SolitaireIcon from '../../assets/images/solitaire-icon.webp';
 import * as Styled from './styles';
+import GameContextProvider from '../../contexts/GameContext';
 
 const DesktopScreen = () => {
   const [isSolitaireActive, setIsSolitaireActive] = useState(false);
@@ -27,9 +28,11 @@ const DesktopScreen = () => {
             </Styled.Program>
           </Styled.ProgramList>
         ) : (
-          <SolitaireGame
-            setIsSolitaireActive={setIsSolitaireActive}
-          />
+          <GameContextProvider>
+            <SolitaireGame
+              setIsSolitaireActive={setIsSolitaireActive}
+            />
+          </GameContextProvider>
         )}
       </Styled.ProgramContainer>
       <Taskbar isSolitaireActive={isSolitaireActive} />

@@ -17,4 +17,4 @@ const Card = React.forwardRef((props, ref) => {
   );
 });
 
-export default Card;
+export default React.memo(Card);

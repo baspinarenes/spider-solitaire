@@ -31,11 +31,11 @@ const cardCounts = {
   king: 8,
 };
 
-export function getCardNo(type) {
+export const getCardNo = (type) => {
   return cardNo[type];
-}
+};
 
-function shuffle(array) {
+export const shuffle = (array) => {
   const copyArray = [...array];
 
   for (let i = copyArray.length - 1; i > 0; i -= 1) {
@@ -43,9 +43,9 @@ function shuffle(array) {
     [copyArray[i], copyArray[j]] = [copyArray[j], copyArray[i]];
   }
   return copyArray;
-}
+};
 
-export function getRandomDecks() {
+export const getRandomDecks = () => {
   const cardList = Object.entries(cardCounts)
     .map(([cardType, count]) => Array(count).fill(cardNo[cardType]))
     .flat();
@@ -114,4 +114,4 @@ export function getRandomDecks() {
       visibleCardCount: 0,
     },
   };
-}
+};

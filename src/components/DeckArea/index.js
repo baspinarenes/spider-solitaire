@@ -7,8 +7,6 @@ import CardDeck from '../CardDeck';
 const DeckArea = () => {
   const { cardDecks } = useContext(GameContext);
 
-  console.log(cardDecks[`deck${1}`]);
-
   return (
     <Styled.DeckArea>
       {Array.from({ length: 10 }, (_, i) => i + 1).map((id) => (
