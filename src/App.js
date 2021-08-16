@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import IntroductionScreen from './views/IntroductionScreen';
-import DesktopScreen from './views/DesktopScreen/index';
+import DesktopScreen from './views/DesktopScreen';
 import UserContextProvider from './contexts/UserContext';
 
 function App() {

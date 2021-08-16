@@ -20,6 +20,8 @@
       { "extensions": [".js", ".jsx"] }
     ],
     "react/prop-types": "off",
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": 0
   }
 }

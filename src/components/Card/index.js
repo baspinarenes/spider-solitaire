@@ -1,19 +1,20 @@
 import React from 'react';
 import { cardImages } from '../../constants';
 
-const Card = (props) => {
-  const { cardNo } = props;
+const Card = React.forwardRef((props, ref) => {
+  const { isClose, cardId } = props;
 
   return (
-    <div className="card">
+    <div className="card" ref={ref}>
       <img
-        src={cardImages[cardNo]}
+        draggable={false}
+        src={isClose ? cardImages[0] : cardImages[cardId]}
         alt="card"
         width="70"
         height="96"
       />
     </div>
   );
-};
+});
 
 export default Card;

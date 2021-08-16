@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SolitaireGame from '../SolitaireGame/index';
-import Taskbar from '../../components/Taskbar/index';
+import SolitaireGame from '../SolitaireGame';
+import Taskbar from '../../components/Taskbar';
 import SolitaireIcon from '../../assets/images/solitaire-icon.webp';
 import * as Styled from './styles';
 

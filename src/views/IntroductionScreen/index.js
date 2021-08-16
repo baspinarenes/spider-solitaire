@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Splash from '../../components/Splash/index';
-import Login from '../../components/Login/index';
+import Splash from '../../components/Splash';
+import Login from '../../components/Login';
 
 const IntroductionScreen = (props) => {
   const { setIsLoggedIn } = props;

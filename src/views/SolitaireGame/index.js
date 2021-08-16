@@ -1,55 +1,56 @@
 import React from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 import XPWindow from '../../components/XPWindow';
 import * as Styled from './styles';
 import Card from '../../components/Card';
-import CardDeck from '../../components/CardDeck';
+import GameContextProvider from '../../contexts/GameContext';
+import DeckArea from '../../components/DeckArea';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
 
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+
+    console.log(result);
+  };
+
   return (
-    <XPWindow setIsSolitaireActive={setIsSolitaireActive}>
-      <Styled.Board>
-        <Styled.DeckArea>
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-          <CardDeck />
-        </Styled.DeckArea>
-        <Styled.BottomArea>
-          <Styled.CompletedArea>
-            <Card cardNo={13} />
-            <Card cardNo={13} />
-            <Card cardNo={13} />
-            <Card cardNo={13} />
-            <Card cardNo={13} />
-          </Styled.CompletedArea>
-          <Styled.HintArea>
-            <Styled.Hint>
-              <span>Score:</span>
-              <span>100</span>
-            </Styled.Hint>
-            <Styled.Hint>
-              <span>Moves:</span>
-              <span>2</span>
-            </Styled.Hint>
-          </Styled.HintArea>
-          <Styled.DealArea>
-            <Card cardNo={0} />
-            <Card cardNo={0} />
-            <Card cardNo={0} />
-            <Card cardNo={0} />
-            <Card cardNo={0} />
-          </Styled.DealArea>
-        </Styled.BottomArea>
-      </Styled.Board>
-    </XPWindow>
+    <GameContextProvider>
+      <XPWindow setIsSolitaireActive={setIsSolitaireActive}>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Styled.Board>
+            <DeckArea />
+            <Styled.BottomArea>
+              <Styled.CompletedArea>
+                <Card cardId={1} />
+                <Card cardId={1} />
+                <Card cardId={1} />
+                <Card cardId={1} />
+                <Card cardId={1} />
+              </Styled.CompletedArea>
+              <Styled.HintArea>
+                <Styled.Hint>
+                  <span>Score:</span>
+                  <span>100</span>
+                </Styled.Hint>
+                <Styled.Hint>
+                  <span>Moves:</span>
+                  <span>2</span>
+                </Styled.Hint>
+              </Styled.HintArea>
+              <Styled.DealArea>
+                <Card isClose />
+                <Card isClose />
+                <Card isClose />
+                <Card isClose />
+                <Card isClose />
+              </Styled.DealArea>
+            </Styled.BottomArea>
+          </Styled.Board>
+        </DragDropContext>
+      </XPWindow>
+    </GameContextProvider>
   );
 };
 
