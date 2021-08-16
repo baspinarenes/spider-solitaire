@@ -14,6 +14,7 @@ const DeckArea = () => {
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
               <CardDeck deckId={id} deck={cardDecks[`deck${id}`]} />
+              {provided.placeholder}
             </div>
           )}
         </Droppable>

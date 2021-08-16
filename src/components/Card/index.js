@@ -10,8 +10,6 @@ const Card = React.forwardRef((props, ref) => {
         draggable={false}
         src={isClose ? cardImages[0] : cardImages[cardId]}
         alt="card"
-        width="70"
-        height="96"
       />
     </div>
   );

@@ -45,6 +45,24 @@ export const shuffle = (array) => {
   return copyArray;
 };
 
+export const moveOneCard = (
+  cardDecks,
+  sourceDeckId,
+  destinationDeckId
+) => {
+  const cardDecksCopy = { ...cardDecks };
+  cardDecksCopy[destinationDeckId].cards.push(
+    cardDecksCopy[sourceDeckId].cards.pop()
+  );
+
+  if (cardDecksCopy[sourceDeckId].visibleCardCount !== 1) {
+    cardDecksCopy[sourceDeckId].visibleCardCount -= 1;
+  }
+  cardDecksCopy[destinationDeckId].visibleCardCount += 1;
+
+  return cardDecksCopy;
+};
+
 export const getRandomDecks = () => {
   const cardList = Object.entries(cardCounts)
     .map(([cardType, count]) => Array(count).fill(cardNo[cardType]))

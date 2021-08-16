@@ -2,6 +2,7 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import Card from '../Card';
 import * as Styled from './styles';
+import CardPlaceholder from '../../assets/images/cards/card-placeholder.png';
 
 const CardDeck = React.forwardRef((props, ref) => {
   const { deckId, deck } = props;
@@ -25,40 +26,49 @@ const CardDeck = React.forwardRef((props, ref) => {
   }
 
   return (
-    <Styled.Deck ref={ref}>
-      {deck.length !== 0 &&
-        deck.cards.map((id, index) =>
-          index < deck.cards.length - deck.visibleCardCount ? (
-            <Card
-              isClose
-              key={`deck${deckId}${id}`}
-              deckId={deckId}
-              cardId={id}
-            />
-          ) : (
-            <Draggable
-              key={`deck${deckId}${id}`}
-              draggableId={`deck${deckId}${id}`}
-              index={index}
-            >
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  style={getStyle(
-                    provided.draggableProps.style,
-                    snapshot
-                  )}
-                >
-                  <Card deckId={deckId} cardId={id} />
-                </div>
-              )}
-            </Draggable>
+    'cards' in deck && (
+      <Styled.Deck ref={ref}>
+        {deck.cards.length === 0 ? (
+          <img
+            src={CardPlaceholder}
+            alt=""
+            style={{ width: '100%', maxWidth: '74px' }}
+          />
+        ) : (
+          deck.cards.map((id, index) =>
+            index < deck.cards.length - deck.visibleCardCount ? (
+              <Card
+                isClose
+                key={`deck${deckId}${index}`}
+                deckId={deckId}
+                cardId={id}
+              />
+            ) : (
+              <Draggable
+                key={`deck${deckId}${index}`}
+                draggableId={`deck${deckId}${index}`}
+                index={index}
+              >
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    style={getStyle(
+                      provided.draggableProps.style,
+                      snapshot
+                    )}
+                  >
+                    <Card deckId={deckId} cardId={id} />
+                  </div>
+                )}
+              </Draggable>
+            )
           )
         )}
-    </Styled.Deck>
+      </Styled.Deck>
+    )
   );
 });
 
-export default React.memo(CardDeck);
+export default CardDeck;

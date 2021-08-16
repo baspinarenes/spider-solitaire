@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
 export const DeckArea = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(10, 7vw);
   justify-content: space-evenly;
-  gap: 3px;
+  gap: 1px;
+
+  @media (min-width: 500px) {
+    gap: 10px;
+  }
 
   .card {
     height: auto;

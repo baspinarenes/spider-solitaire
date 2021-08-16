@@ -29,7 +29,12 @@ const GameContextProvider = (props) => {
   }, []);
 
   return (
-    <GameContext.Provider value={{ cardDecks, setCardDecks }}>
+    <GameContext.Provider
+      value={{
+        cardDecks,
+        setCardDecks,
+      }}
+    >
       {children}
     </GameContext.Provider>
   );
