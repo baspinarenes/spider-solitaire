@@ -15,6 +15,7 @@ const SolitaireGame = (props) => {
     setSelectedCards,
     dealingDecks,
     setDealingDecks,
+    setCompletedDeckCount,
     completedDeckCount,
   } = useContext(GameContext);
 
@@ -37,7 +38,17 @@ const SolitaireGame = (props) => {
       return;
     }
 
-    setCardDecks(moveCards(cardDecks, source, destination));
+    const { newCardDecks, isThereACompletedDeck } = moveCards(
+      cardDecks,
+      source,
+      destination
+    );
+
+    if (isThereACompletedDeck) {
+      setCompletedDeckCount(completedDeckCount + 1);
+    }
+
+    setCardDecks(newCardDecks);
   };
 
   const handleOnDragStart = (result) => {
@@ -77,7 +88,9 @@ const SolitaireGame = (props) => {
           <DeckArea />
           <Styled.BottomArea>
             <Styled.CompletedArea>
-              {Array(completedDeckCount).fill(<Card cardId={1} />)}
+              {React.Children.toArray(
+                Array(completedDeckCount).fill(<Card cardId={1} />)
+              )}
             </Styled.CompletedArea>
             <Styled.HintArea>
               <Styled.Hint>
@@ -94,7 +107,9 @@ const SolitaireGame = (props) => {
                 dealingDecks.length ? handleDealClick : undefined
               }
             >
-              {Array(dealingDecks.length).fill(<Card isClose />)}
+              {React.Children.toArray(
+                Array(dealingDecks.length).fill(<Card isClose />)
+              )}
             </Styled.DealArea>
           </Styled.BottomArea>
         </Styled.Board>

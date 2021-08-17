@@ -35,6 +35,7 @@ export const getCardNo = (type) => {
   return cardNo[type];
 };
 
+// Fisher-Yates algorithm
 export const shuffle = (array) => {
   const copyArray = [...array];
 
@@ -43,6 +44,11 @@ export const shuffle = (array) => {
     [copyArray[i], copyArray[j]] = [copyArray[j], copyArray[i]];
   }
   return copyArray;
+};
+
+const checkCompletedDeck = (cards) => {
+  const completedDeck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  return cards.join().includes(completedDeck.join());
 };
 
 export const moveCards = (cardDecks, source, destination) => {
@@ -55,11 +61,12 @@ export const moveCards = (cardDecks, source, destination) => {
   const destinationDeck = { ...cardDecks[destinationDeckId] };
 
   const selectedCardList = sourceDeck.cards.splice(sourceCardIndex);
+
   const parentCardNo =
     destinationDeck.cards[destinationCardIndex - 1];
 
   const isNextCard =
-    destinationCardIndex === 1 ||
+    destinationCardIndex === 0 ||
     selectedCardList[0] === parentCardNo + 1;
 
   if (isNextCard) {
@@ -75,10 +82,21 @@ export const moveCards = (cardDecks, source, destination) => {
     sourceDeck.cards.push(...selectedCardList);
   }
 
+  const isCompleted = checkCompletedDeck(destinationDeck.cards);
+
+  if (isCompleted) {
+    destinationDeck.cards.splice(-13);
+    destinationDeck.visibleCardCount -=
+      destinationDeck.visibleCardCount === 13 ? 12 : 13;
+  }
+
   return {
-    ...cardDecks,
-    [sourceDeckId]: sourceDeck,
-    [destinationDeckId]: destinationDeck,
+    newCardDecks: {
+      ...cardDecks,
+      [sourceDeckId]: sourceDeck,
+      [destinationDeckId]: destinationDeck,
+    },
+    isThereACompletedDeck: isCompleted,
   };
 };
 
