@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import SolitaireBackground from '../../assets/images/solitaire-background.png';
+import ClickableCursor from '../../assets/cursors/cursor-clickable.cur';
 
 export const Board = styled.div`
   position: relative;
@@ -43,6 +44,7 @@ export const HintArea = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: url(${ClickableCursor}), pointer;
 `;
 
 export const Hint = styled.div`
@@ -62,13 +64,13 @@ export const Hint = styled.div`
   }
 `;
 
-export const DealArea = styled.div`
+export const CompletedArea = styled.div`
   height: inherit;
   width: 130px;
   display: grid;
   grid-template-columns: repeat(11, 10px);
   align-items: center;
-  direction: rtl;
+  direction: ltr;
 
   .card {
     height: inherit;
@@ -80,8 +82,9 @@ export const DealArea = styled.div`
   }
 `;
 
-export const CompletedArea = styled(DealArea)`
-  direction: ltr;
+export const DealArea = styled(CompletedArea)`
+  direction: rtl;
+  cursor: url(${ClickableCursor}), pointer;
 `;
 
 const colorChange = keyframes`

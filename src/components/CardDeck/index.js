@@ -62,6 +62,11 @@ const CardDeck = React.forwardRef((props, ref) => {
           hint.destinationStartingIndex <= index)
           ? 'invert(100%)'
           : '',
+      transition:
+        hint.destinationDeckId === dId &&
+        hint.destinationStartingIndex <= index
+          ? 'filter 400ms 300ms'
+          : '',
     };
   }
 

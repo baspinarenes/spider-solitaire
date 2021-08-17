@@ -38,7 +38,7 @@ const GameContextProvider = (props) => {
     if (Object.keys(hint).length > 0) {
       setTimeout(() => {
         setHint({});
-      }, 1000);
+      }, 1500);
     }
   }, [hint]);
 

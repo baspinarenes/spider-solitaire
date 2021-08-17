@@ -10,6 +10,7 @@ import { moveCards, deal, getHint } from '../../utils/cardUtils';
 import DealCardsSound from '../../assets/audios/deal-cards.ogg';
 import HintSound from '../../assets/audios/hint.ogg';
 import NoHintSound from '../../assets/audios/no-hint.ogg';
+import WinSound from '../../assets/audios/win.ogg';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
@@ -30,10 +31,14 @@ const SolitaireGame = (props) => {
   });
 
   const [playHintSound] = useSound(HintSound, {
-    volume: 0.03,
+    volume: 1,
   });
 
   const [playNoHintSound] = useSound(NoHintSound, {
+    volume: 1,
+  });
+
+  const [playWinSound] = useSound(WinSound, {
     volume: 1,
   });
 
@@ -119,6 +124,13 @@ const SolitaireGame = (props) => {
     }
   };
 
+  let isGameFinished = false;
+
+  if (gameStats.completedDeckCount === 8) {
+    playWinSound();
+    isGameFinished = true;
+  }
+
   return (
     <XPWindow setIsSolitaireActive={setIsSolitaireActive}>
       <DragDropContext
@@ -155,15 +167,8 @@ const SolitaireGame = (props) => {
               )}
             </Styled.DealArea>
           </Styled.BottomArea>
-          <Styled.WinScreen
-            isGameFinished={gameStats.completedDeckCount === 8}
-          >
+          <Styled.WinScreen isGameFinished={isGameFinished}>
             <span>You Won!</span>
-            <Styled.Window>
-              <Styled.TitleBar>
-                <span>Game Over</span>
-              </Styled.TitleBar>
-            </Styled.Window>
           </Styled.WinScreen>
         </Styled.Board>
       </DragDropContext>
