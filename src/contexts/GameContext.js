@@ -25,7 +25,12 @@ const GameContextProvider = (props) => {
     deckId: '',
     items: [],
   });
-  const [completedDeckCount, setCompletedDeckCount] = useState(0);
+
+  const [gameStats, setGameStats] = useState({
+    completedDeckCount: 0,
+    score: 500,
+    moves: 0,
+  });
 
   useEffect(() => {
     const [cDecks, dDecks] = getRandomDecks();
@@ -44,8 +49,8 @@ const GameContextProvider = (props) => {
         setSelectedCards,
         dealingDecks,
         setDealingDecks,
-        completedDeckCount,
-        setCompletedDeckCount,
+        gameStats,
+        setGameStats,
       }}
     >
       {children}

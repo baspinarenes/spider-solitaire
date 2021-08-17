@@ -11,15 +11,17 @@ import DealCardsSound from '../../assets/audios/deal-cards.ogg';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
+
   const {
     cardDecks,
     setCardDecks,
     setSelectedCards,
     dealingDecks,
     setDealingDecks,
-    setCompletedDeckCount,
-    completedDeckCount,
+    gameStats,
+    setGameStats,
   } = useContext(GameContext);
+
   const [playDealCardsSound] = useSound(DealCardsSound, {
     volume: 1,
   });
@@ -43,14 +45,20 @@ const SolitaireGame = (props) => {
       return;
     }
 
-    const { newCardDecks, isThereACompletedDeck } = moveCards(
-      cardDecks,
-      source,
-      destination
-    );
+    const { newCardDecks, isThereACompletedDeck, isDragSuccessful } =
+      moveCards(cardDecks, source, destination);
 
-    if (isThereACompletedDeck) {
-      setCompletedDeckCount(completedDeckCount + 1);
+    if (isDragSuccessful) {
+      const previousGameStats = { ...gameStats };
+      previousGameStats.moves += 1;
+      previousGameStats.score -= 1;
+
+      if (isThereACompletedDeck) {
+        previousGameStats.completedDeckCount += 1;
+        previousGameStats.score += 100;
+      }
+
+      setGameStats(previousGameStats);
     }
 
     setCardDecks(newCardDecks);
@@ -95,17 +103,19 @@ const SolitaireGame = (props) => {
           <Styled.BottomArea>
             <Styled.CompletedArea>
               {React.Children.toArray(
-                Array(completedDeckCount).fill(<Card cardId={1} />)
+                Array(gameStats.completedDeckCount).fill(
+                  <Card cardId={1} />
+                )
               )}
             </Styled.CompletedArea>
             <Styled.HintArea>
               <Styled.Hint>
                 <span>Score:</span>
-                <span>100</span>
+                <span>{gameStats.score}</span>
               </Styled.Hint>
               <Styled.Hint>
                 <span>Moves:</span>
-                <span>2</span>
+                <span>{gameStats.moves}</span>
               </Styled.Hint>
             </Styled.HintArea>
             <Styled.DealArea
@@ -118,6 +128,16 @@ const SolitaireGame = (props) => {
               )}
             </Styled.DealArea>
           </Styled.BottomArea>
+          <Styled.WinScreen
+            isGameFinished={gameStats.completedDeckCount === 8}
+          >
+            <span>You Won!</span>
+            <Styled.Window>
+              <Styled.TitleBar>
+                <span>Game Over</span>
+              </Styled.TitleBar>
+            </Styled.Window>
+          </Styled.WinScreen>
         </Styled.Board>
       </DragDropContext>
     </XPWindow>

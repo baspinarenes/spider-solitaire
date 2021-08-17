@@ -9,6 +9,9 @@ const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
   const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState(user.username);
   const [play] = useSound(OpeningMusic, { volume: 0.15 });
+
+  console.log(isGuest);
+
   const handleAccountClick = (e) => {
     e.preventDefault();
 
@@ -19,7 +22,7 @@ const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
       });
       setIsLoggedIn(true);
       play();
-    } else if (username) {
+    } else if (username && username !== 'Guest') {
       setUser({
         ...user,
         username,
@@ -40,7 +43,7 @@ const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
   return (
     <Styled.LoginAccountButton
       $isGuest={isGuest}
-      $isUsernameWritten={username}
+      $isUsernameWritten={username && username !== 'Guest'}
       onClick={handleAccountClick}
     >
       <Styled.AccountAvatar src={AccountImage} alt="" />

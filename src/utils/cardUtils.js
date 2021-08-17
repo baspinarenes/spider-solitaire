@@ -62,6 +62,8 @@ export const moveCards = (cardDecks, source, destination) => {
 
   const selectedCardList = sourceDeck.cards.splice(sourceCardIndex);
 
+  let isDragSuccessful = false;
+
   const parentCardNo =
     destinationDeck.cards[destinationCardIndex - 1];
 
@@ -71,6 +73,7 @@ export const moveCards = (cardDecks, source, destination) => {
 
   if (isNextCard) {
     destinationDeck.cards.push(...selectedCardList);
+    isDragSuccessful = true;
 
     if (sourceDeck.visibleCardCount === selectedCardList.length) {
       sourceDeck.visibleCardCount = 1;
@@ -82,9 +85,11 @@ export const moveCards = (cardDecks, source, destination) => {
     sourceDeck.cards.push(...selectedCardList);
   }
 
-  const isCompleted = checkCompletedDeck(destinationDeck.cards);
+  const isThereACompletedDeck = checkCompletedDeck(
+    destinationDeck.cards
+  );
 
-  if (isCompleted) {
+  if (isThereACompletedDeck) {
     destinationDeck.cards.splice(-13);
     destinationDeck.visibleCardCount -=
       destinationDeck.visibleCardCount === 13 ? 12 : 13;
@@ -96,7 +101,8 @@ export const moveCards = (cardDecks, source, destination) => {
       [sourceDeckId]: sourceDeck,
       [destinationDeckId]: destinationDeck,
     },
-    isThereACompletedDeck: isCompleted,
+    isThereACompletedDeck,
+    isDragSuccessful,
   };
 };
 
@@ -106,12 +112,14 @@ export const deal = (cardDecks, dealingCards) => {
 
   const dealCards = copyDealingDecks.pop();
 
-  /* eslint-disable no-param-reassign */
-  Object.entries(copyCardDecks).forEach(([, deck]) => {
-    deck.cards.push(dealCards.shift());
-    deck.visibleCardCount += 1;
-  });
-  /* eslint-enable no-param-reassign */
+  if (dealCards) {
+    /* eslint-disable no-param-reassign */
+    Object.entries(copyCardDecks).forEach(([, deck]) => {
+      deck.cards.push(dealCards.shift());
+      deck.visibleCardCount += 1;
+    });
+    /* eslint-enable no-param-reassign */
+  }
 
   return [{ ...copyCardDecks }, [...copyDealingDecks]];
 };
@@ -174,6 +182,21 @@ export const getRandomDecks = () => {
       shuffledCardList.slice(94, 104),
     ],
   ];
+};
+
+export const newGame = (
+  setCardDecks,
+  setDealingDecks,
+  setGameStats
+) => {
+  const [cDecks, dDecks] = getRandomDecks();
+  setCardDecks(cDecks);
+  setDealingDecks(dDecks);
+  setGameStats({
+    completedDeckCount: 0,
+    score: 500,
+    moves: 0,
+  });
 };
 
 export const getIndexWhichNextCardsDraggable = (deck) => {

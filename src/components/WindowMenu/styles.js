@@ -28,11 +28,16 @@ export const MenuButton = styled.button`
   font-size: 11px;
   text-align: left;
   color: black;
+
+  :hover + div {
+    display: flex;
+  }
 `;
 
 export const MenuContent = styled.div`
   display: none;
   position: absolute;
+  z-index: 5;
   top: 20px;
   left: 0;
   background-color: white;
@@ -44,7 +49,7 @@ export const MenuContent = styled.div`
 
 export const SubMenuButton = styled.button`
   color: black;
-  padding: 1px 1px 1px 12px;
+  padding: 2px 2px 4px 12px;
   font-size: 11px;
   width: 100%;
   text-align: left;
