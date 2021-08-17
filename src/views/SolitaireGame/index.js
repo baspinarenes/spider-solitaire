@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+import useSound from 'use-sound';
 import XPWindow from '../../components/XPWindow';
 import * as Styled from './styles';
 import Card from '../../components/Card';
 import DeckArea from '../../components/DeckArea';
 import { GameContext } from '../../contexts/GameContext';
 import { moveCards, deal } from '../../utils/cardUtils';
+import DealCardsSound from '../../assets/audios/deal-cards.ogg';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
@@ -18,6 +20,9 @@ const SolitaireGame = (props) => {
     setCompletedDeckCount,
     completedDeckCount,
   } = useContext(GameContext);
+  const [playDealCardsSound] = useSound(DealCardsSound, {
+    volume: 1,
+  });
 
   const handleOnDragEnd = (result) => {
     const { source, destination } = result;
@@ -70,6 +75,7 @@ const SolitaireGame = (props) => {
   };
 
   const handleDealClick = () => {
+    playDealCardsSound();
     const [returnCardDecks, returnDealingDecks] = deal(
       cardDecks,
       dealingDecks

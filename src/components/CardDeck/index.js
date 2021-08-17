@@ -1,14 +1,24 @@
 import React, { useContext } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import useSound from 'use-sound';
 import Card from '../Card';
 import * as Styled from './styles';
 import CardPlaceholder from '../../assets/images/cards/card-placeholder.png';
 import { GameContext } from '../../contexts/GameContext';
 import { getIndexWhichNextCardsDraggable } from '../../utils/cardUtils';
+import MouseDownSound from '../../assets/audios/mouse-down.ogg';
 
 const CardDeck = React.forwardRef((props, ref) => {
   const { deckId, deck } = props;
   const { selectedCards } = useContext(GameContext);
+  const [playMouseDownSound] = useSound(MouseDownSound, {
+    volume: 1,
+  });
+
+  const handleMouseDownFromCard = (e) => {
+    e.preventDefault();
+    playMouseDownSound();
+  };
 
   function getStyle(style, snapshot, dId, id) {
     /* 
@@ -67,6 +77,7 @@ const CardDeck = React.forwardRef((props, ref) => {
               {(provided, snapshot) => {
                 return (
                   <div
+                    role="none"
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -76,6 +87,11 @@ const CardDeck = React.forwardRef((props, ref) => {
                       `deck${deckId}`,
                       index
                     )}
+                    onMouseDown={
+                      index >= indexWhichNextCardsDraggable
+                        ? handleMouseDownFromCard
+                        : undefined
+                    }
                   >
                     <Card
                       deckId={deckId}
