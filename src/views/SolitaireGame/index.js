@@ -6,8 +6,10 @@ import * as Styled from './styles';
 import Card from '../../components/Card';
 import DeckArea from '../../components/DeckArea';
 import { GameContext } from '../../contexts/GameContext';
-import { moveCards, deal } from '../../utils/cardUtils';
+import { moveCards, deal, getHint } from '../../utils/cardUtils';
 import DealCardsSound from '../../assets/audios/deal-cards.ogg';
+import HintSound from '../../assets/audios/hint.ogg';
+import NoHintSound from '../../assets/audios/no-hint.ogg';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
@@ -20,9 +22,18 @@ const SolitaireGame = (props) => {
     setDealingDecks,
     gameStats,
     setGameStats,
+    setHint,
   } = useContext(GameContext);
 
   const [playDealCardsSound] = useSound(DealCardsSound, {
+    volume: 1,
+  });
+
+  const [playHintSound] = useSound(HintSound, {
+    volume: 0.03,
+  });
+
+  const [playNoHintSound] = useSound(NoHintSound, {
     volume: 1,
   });
 
@@ -92,6 +103,22 @@ const SolitaireGame = (props) => {
     setDealingDecks(returnDealingDecks);
   };
 
+  const handleClickHint = () => {
+    const hint = getHint(cardDecks);
+
+    if (hint) {
+      playHintSound();
+      setHint({
+        sourceDeckId: hint.sourceDeckId,
+        sourceStartingIndex: hint.sourceStartingIndex,
+        destinationDeckId: hint.destinationDeckId,
+        destinationStartingIndex: hint.destinationStartingIndex,
+      });
+    } else {
+      playNoHintSound();
+    }
+  };
+
   return (
     <XPWindow setIsSolitaireActive={setIsSolitaireActive}>
       <DragDropContext
@@ -108,7 +135,7 @@ const SolitaireGame = (props) => {
                 )
               )}
             </Styled.CompletedArea>
-            <Styled.HintArea>
+            <Styled.HintArea onClick={handleClickHint}>
               <Styled.Hint>
                 <span>Score:</span>
                 <span>{gameStats.score}</span>

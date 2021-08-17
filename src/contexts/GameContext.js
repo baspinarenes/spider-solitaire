@@ -32,6 +32,16 @@ const GameContextProvider = (props) => {
     moves: 0,
   });
 
+  const [hint, setHint] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(hint).length > 0) {
+      setTimeout(() => {
+        setHint({});
+      }, 1000);
+    }
+  }, [hint]);
+
   useEffect(() => {
     const [cDecks, dDecks] = getRandomDecks();
     setCardDecks(cDecks);
@@ -51,6 +61,8 @@ const GameContextProvider = (props) => {
         setDealingDecks,
         gameStats,
         setGameStats,
+        hint,
+        setHint,
       }}
     >
       {children}

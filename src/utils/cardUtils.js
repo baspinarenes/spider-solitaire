@@ -226,3 +226,43 @@ export const getIndexWhichNextCardsDraggable = (deck) => {
 
   return firstIndexOfOrderedCards;
 };
+
+export const getOrderedCardListsFromDecks = (cardDecks) => {
+  const orderedCardListsFromDecks = [];
+
+  Object.entries(cardDecks).forEach(([, deck]) => {
+    orderedCardListsFromDecks.push({
+      startingIndex: getIndexWhichNextCardsDraggable(deck),
+      cards: deck.cards.slice(getIndexWhichNextCardsDraggable(deck)),
+    });
+  });
+
+  return orderedCardListsFromDecks;
+};
+
+export const getHint = (cardDecks) => {
+  const orderedCardLists = getOrderedCardListsFromDecks(cardDecks);
+
+  const hints = [];
+
+  for (let i = 0; i < orderedCardLists.length - 1; i += 1) {
+    const sourceDeck = orderedCardLists[i];
+    for (let j = 0; j < orderedCardLists.length; j += 1) {
+      const destinationDeck = orderedCardLists[j];
+
+      if (
+        sourceDeck.cards.at(0) ===
+        destinationDeck.cards.at(-1) + 1
+      ) {
+        hints.push({
+          sourceDeckId: `deck${i + 1}`,
+          destinationDeckId: `deck${j + 1}`,
+          sourceStartingIndex: sourceDeck.startingIndex,
+          destinationStartingIndex: destinationDeck.startingIndex,
+        });
+      }
+    }
+  }
+
+  return shuffle(hints)[0];
+};

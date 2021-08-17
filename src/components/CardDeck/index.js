@@ -10,7 +10,7 @@ import MouseDownSound from '../../assets/audios/mouse-down.ogg';
 
 const CardDeck = React.forwardRef((props, ref) => {
   const { deckId, deck } = props;
-  const { selectedCards } = useContext(GameContext);
+  const { selectedCards, hint } = useContext(GameContext);
   const [playMouseDownSound] = useSound(MouseDownSound, {
     volume: 1,
   });
@@ -20,7 +20,15 @@ const CardDeck = React.forwardRef((props, ref) => {
     playMouseDownSound();
   };
 
-  function getStyle(style, snapshot, dId, id) {
+  function getStyle(style, snapshot, dId, index) {
+    console.log(
+      'dId: ',
+      dId,
+      ' index: ',
+      index,
+      ' hint.sourceStartingIndex <= index: ',
+      hint.sourceStartingIndex <= index
+    );
     /* 
     This function overrides the default gliding behavior of the react-beautiful-dnd 
     package when the drag is above the other draggable object.
@@ -33,7 +41,7 @@ const CardDeck = React.forwardRef((props, ref) => {
 
     if (
       selectedCards.deckId === dId &&
-      selectedCards.items.includes(id)
+      selectedCards.items.includes(index)
     ) {
       return {
         ...style,
@@ -47,6 +55,13 @@ const CardDeck = React.forwardRef((props, ref) => {
       ...style,
       // We ovveride the "translate(... px)" that performs the sliding behavior as "none".
       transform: 'none',
+      filter:
+        (hint.sourceDeckId === dId &&
+          hint.sourceStartingIndex <= index) ||
+        (hint.destinationDeckId === dId &&
+          hint.destinationStartingIndex <= index)
+          ? 'invert(100%)'
+          : '',
     };
   }
 
