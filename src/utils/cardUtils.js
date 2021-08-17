@@ -82,6 +82,22 @@ export const moveCards = (cardDecks, source, destination) => {
   };
 };
 
+export const deal = (cardDecks, dealingCards) => {
+  const copyCardDecks = { ...cardDecks };
+  const copyDealingDecks = [...dealingCards];
+
+  const dealCards = copyDealingDecks.pop();
+
+  /* eslint-disable no-param-reassign */
+  Object.entries(copyCardDecks).forEach(([, deck]) => {
+    deck.cards.push(dealCards.shift());
+    deck.visibleCardCount += 1;
+  });
+  /* eslint-enable no-param-reassign */
+
+  return [{ ...copyCardDecks }, [...copyDealingDecks]];
+};
+
 export const getRandomDecks = () => {
   const cardList = Object.entries(cardCounts)
     .map(([cardType, count]) => Array(count).fill(cardNo[cardType]))
@@ -89,66 +105,55 @@ export const getRandomDecks = () => {
 
   const shuffledCardList = shuffle(cardList);
 
-  return {
-    deck1: {
-      cards: shuffledCardList.slice(0, 6),
-      visibleCardCount: 1,
+  return [
+    {
+      deck1: {
+        cards: shuffledCardList.slice(0, 6),
+        visibleCardCount: 1,
+      },
+      deck2: {
+        cards: shuffledCardList.slice(6, 12),
+        visibleCardCount: 1,
+      },
+      deck3: {
+        cards: shuffledCardList.slice(12, 18),
+        visibleCardCount: 1,
+      },
+      deck4: {
+        cards: shuffledCardList.slice(18, 24),
+        visibleCardCount: 1,
+      },
+      deck5: {
+        cards: shuffledCardList.slice(24, 29),
+        visibleCardCount: 1,
+      },
+      deck6: {
+        cards: shuffledCardList.slice(29, 34),
+        visibleCardCount: 1,
+      },
+      deck7: {
+        cards: shuffledCardList.slice(34, 39),
+        visibleCardCount: 1,
+      },
+      deck8: {
+        cards: shuffledCardList.slice(39, 44),
+        visibleCardCount: 1,
+      },
+      deck9: {
+        cards: shuffledCardList.slice(44, 49),
+        visibleCardCount: 1,
+      },
+      deck10: {
+        cards: shuffledCardList.slice(49, 54),
+        visibleCardCount: 1,
+      },
     },
-    deck2: {
-      cards: shuffledCardList.slice(6, 12),
-      visibleCardCount: 1,
-    },
-    deck3: {
-      cards: shuffledCardList.slice(12, 18),
-      visibleCardCount: 1,
-    },
-    deck4: {
-      cards: shuffledCardList.slice(18, 24),
-      visibleCardCount: 1,
-    },
-    deck5: {
-      cards: shuffledCardList.slice(24, 29),
-      visibleCardCount: 1,
-    },
-    deck6: {
-      cards: shuffledCardList.slice(29, 34),
-      visibleCardCount: 1,
-    },
-    deck7: {
-      cards: shuffledCardList.slice(34, 39),
-      visibleCardCount: 1,
-    },
-    deck8: {
-      cards: shuffledCardList.slice(39, 44),
-      visibleCardCount: 1,
-    },
-    deck9: {
-      cards: shuffledCardList.slice(44, 49),
-      visibleCardCount: 1,
-    },
-    deck10: {
-      cards: shuffledCardList.slice(49, 54),
-      visibleCardCount: 1,
-    },
-    dealDeck1: {
-      cards: shuffledCardList.slice(54, 64),
-      visibleCardCount: 0,
-    },
-    dealDeck2: {
-      cards: shuffledCardList.slice(64, 74),
-      visibleCardCount: 0,
-    },
-    dealDeck3: {
-      cards: shuffledCardList.slice(74, 84),
-      visibleCardCount: 0,
-    },
-    dealDeck4: {
-      cards: shuffledCardList.slice(84, 94),
-      visibleCardCount: 0,
-    },
-    dealDeck5: {
-      cards: shuffledCardList.slice(94, 104),
-      visibleCardCount: 0,
-    },
-  };
+    [
+      shuffledCardList.slice(54, 64),
+      shuffledCardList.slice(64, 74),
+      shuffledCardList.slice(74, 84),
+      shuffledCardList.slice(84, 94),
+      shuffledCardList.slice(94, 104),
+    ],
+  ];
 };

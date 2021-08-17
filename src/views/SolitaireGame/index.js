@@ -5,12 +5,17 @@ import * as Styled from './styles';
 import Card from '../../components/Card';
 import DeckArea from '../../components/DeckArea';
 import { GameContext } from '../../contexts/GameContext';
-import { moveCards } from '../../utils/cardUtils';
+import { moveCards, deal } from '../../utils/cardUtils';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
-  const { cardDecks, setCardDecks, setSelectedCards } =
-    useContext(GameContext);
+  const {
+    cardDecks,
+    setCardDecks,
+    setSelectedCards,
+    dealingDecks,
+    setDealingDecks,
+  } = useContext(GameContext);
 
   const handleOnDragEnd = (result) => {
     const { source, destination } = result;
@@ -52,6 +57,15 @@ const SolitaireGame = (props) => {
     });
   };
 
+  const handleDealClick = () => {
+    const [returnCardDecks, returnDealingDecks] = deal(
+      cardDecks,
+      dealingDecks
+    );
+    setCardDecks(returnCardDecks);
+    setDealingDecks(returnDealingDecks);
+  };
+
   return (
     <XPWindow setIsSolitaireActive={setIsSolitaireActive}>
       <DragDropContext
@@ -78,12 +92,12 @@ const SolitaireGame = (props) => {
                 <span>2</span>
               </Styled.Hint>
             </Styled.HintArea>
-            <Styled.DealArea>
-              <Card isClose />
-              <Card isClose />
-              <Card isClose />
-              <Card isClose />
-              <Card isClose />
+            <Styled.DealArea
+              onClick={
+                dealingDecks.length ? handleDealClick : undefined
+              }
+            >
+              {Array(dealingDecks.length).fill(<Card isClose />)}
             </Styled.DealArea>
           </Styled.BottomArea>
         </Styled.Board>

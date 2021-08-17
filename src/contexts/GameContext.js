@@ -24,6 +24,8 @@ const GameContextProvider = (props) => {
     dealDeck5: [],
   });
 
+  const [dealingDecks, setDealingDecks] = useState([]);
+
   const [isAnyDragging, setIsAnyDragging] = useState(false);
   const [selectedCards, setSelectedCards] = useState({
     deckId: '',
@@ -31,7 +33,9 @@ const GameContextProvider = (props) => {
   });
 
   useEffect(() => {
-    setCardDecks(getRandomDecks());
+    const [cDecks, dDecks] = getRandomDecks();
+    setCardDecks(cDecks);
+    setDealingDecks(dDecks);
   }, []);
 
   return (
@@ -43,6 +47,8 @@ const GameContextProvider = (props) => {
         setIsAnyDragging,
         selectedCards,
         setSelectedCards,
+        dealingDecks,
+        setDealingDecks,
       }}
     >
       {children}
