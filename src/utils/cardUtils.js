@@ -157,3 +157,31 @@ export const getRandomDecks = () => {
     ],
   ];
 };
+
+export const getIndexWhichNextCardsDraggable = (deck) => {
+  // Deck: X X X 4 5 6 1 2
+  // Visible Cards Starting Index: 3 => X X X [4] 5 6 1 2
+
+  // EXAMPLE: X X X X X 5 10 Q K 8 9 10 J Q K
+  const visibleCardsStartingIndex =
+    deck.cards.length - deck.visibleCardCount;
+
+  let firstIndexOfOrderedCards = visibleCardsStartingIndex;
+  let nextCard;
+  let currentCard;
+
+  for (
+    let i = visibleCardsStartingIndex;
+    i < deck.cards.length;
+    i += 1
+  ) {
+    currentCard = deck.cards[i];
+    nextCard = deck.cards[i + 1];
+
+    if (nextCard && currentCard + 1 !== nextCard) {
+      firstIndexOfOrderedCards = i + 1;
+    }
+  }
+
+  return firstIndexOfOrderedCards;
+};

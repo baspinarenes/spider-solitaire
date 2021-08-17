@@ -15,6 +15,7 @@ const SolitaireGame = (props) => {
     setSelectedCards,
     dealingDecks,
     setDealingDecks,
+    completedDeckCount,
   } = useContext(GameContext);
 
   const handleOnDragEnd = (result) => {
@@ -76,11 +77,7 @@ const SolitaireGame = (props) => {
           <DeckArea />
           <Styled.BottomArea>
             <Styled.CompletedArea>
-              <Card cardId={1} />
-              <Card cardId={1} />
-              <Card cardId={1} />
-              <Card cardId={1} />
-              <Card cardId={1} />
+              {Array(completedDeckCount).fill(<Card cardId={1} />)}
             </Styled.CompletedArea>
             <Styled.HintArea>
               <Styled.Hint>

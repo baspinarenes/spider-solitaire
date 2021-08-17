@@ -7,7 +7,7 @@ const Card = React.forwardRef((props, ref) => {
   return (
     <div className="card" ref={ref}>
       <img
-        draggable={false}
+        draggable={false} // Removes the preview created by dragging and holding the image.
         src={isClose ? cardImages[0] : cardImages[cardId]}
         alt="card"
       />

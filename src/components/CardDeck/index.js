@@ -4,6 +4,7 @@ import Card from '../Card';
 import * as Styled from './styles';
 import CardPlaceholder from '../../assets/images/cards/card-placeholder.png';
 import { GameContext } from '../../contexts/GameContext';
+import { getIndexWhichNextCardsDraggable } from '../../utils/cardUtils';
 
 const CardDeck = React.forwardRef((props, ref) => {
   const { deckId, deck } = props;
@@ -39,6 +40,13 @@ const CardDeck = React.forwardRef((props, ref) => {
     };
   }
 
+  let indexWhichNextCardsDraggable;
+
+  if ('cards' in deck) {
+    indexWhichNextCardsDraggable =
+      getIndexWhichNextCardsDraggable(deck);
+  }
+
   return (
     'cards' in deck && (
       <Styled.Deck ref={ref}>
@@ -54,9 +62,7 @@ const CardDeck = React.forwardRef((props, ref) => {
               key={`deck${deckId}${index}`}
               draggableId={`deck${deckId}${index}`}
               index={index}
-              isDragDisabled={
-                index < deck.cards.length - deck.visibleCardCount
-              }
+              isDragDisabled={index < indexWhichNextCardsDraggable}
             >
               {(provided, snapshot) => {
                 return (
