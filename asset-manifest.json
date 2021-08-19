@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spider-solitaire/static/css/main.1fce6a80.chunk.css",
-    "main.js": "/spider-solitaire/static/js/main.7fac2132.chunk.js",
-    "main.js.map": "/spider-solitaire/static/js/main.7fac2132.chunk.js.map",
+    "main.js": "/spider-solitaire/static/js/main.c68874ce.chunk.js",
+    "main.js.map": "/spider-solitaire/static/js/main.c68874ce.chunk.js.map",
     "runtime-main.js": "/spider-solitaire/static/js/runtime-main.dd338a07.js",
     "runtime-main.js.map": "/spider-solitaire/static/js/runtime-main.dd338a07.js.map",
     "static/js/2.0a372dc8.chunk.js": "/spider-solitaire/static/js/2.0a372dc8.chunk.js",
@@ -55,6 +55,6 @@
     "static/js/runtime-main.dd338a07.js",
     "static/js/2.0a372dc8.chunk.js",
     "static/css/main.1fce6a80.chunk.css",
-    "static/js/main.7fac2132.chunk.js"
+    "static/js/main.c68874ce.chunk.js"
   ]
 }
