@@ -106,19 +106,31 @@ export const moveCards = (cardDecks, source, destination) => {
   };
 };
 
-export const deal = (cardDecks, dealingCards) => {
+export const deal = (
+  cardDecks,
+  dealingCards,
+  playCannotDealSound
+) => {
   const copyCardDecks = { ...cardDecks };
   const copyDealingDecks = [...dealingCards];
 
-  const dealCards = copyDealingDecks.pop();
+  const a = Object.values(copyCardDecks).every(
+    (deck) => deck.cards.length > 0
+  );
 
-  if (dealCards) {
-    /* eslint-disable no-param-reassign */
-    Object.entries(copyCardDecks).forEach(([, deck]) => {
-      deck.cards.push(dealCards.shift());
-      deck.visibleCardCount += 1;
-    });
-    /* eslint-enable no-param-reassign */
+  if (a) {
+    const dealCards = copyDealingDecks.pop();
+
+    if (dealCards) {
+      /* eslint-disable no-param-reassign */
+      Object.entries(copyCardDecks).forEach(([, deck]) => {
+        deck.cards.push(dealCards.shift());
+        deck.visibleCardCount += 1;
+      });
+      /* eslint-enable no-param-reassign */
+    }
+  } else {
+    playCannotDealSound();
   }
 
   return [{ ...copyCardDecks }, [...copyDealingDecks]];
@@ -134,43 +146,53 @@ export const getRandomDecks = () => {
   return [
     {
       deck1: {
-        cards: shuffledCardList.slice(0, 6),
-        visibleCardCount: 1,
+        // cards: shuffledCardList.slice(0, 6),
+        cards: [10, 11, 12],
+        visibleCardCount: 3,
       },
       deck2: {
-        cards: shuffledCardList.slice(6, 12),
-        visibleCardCount: 1,
+        // cards: shuffledCardList.slice(6, 12),
+        cards: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        visibleCardCount: 10,
       },
       deck3: {
-        cards: shuffledCardList.slice(12, 18),
-        visibleCardCount: 1,
+        // cards: shuffledCardList.slice(12, 18),
+        cards: [12, 13],
+        visibleCardCount: 2,
       },
       deck4: {
-        cards: shuffledCardList.slice(18, 24),
+        // cards: shuffledCardList.slice(18, 24),
+        cards: [],
         visibleCardCount: 1,
       },
       deck5: {
-        cards: shuffledCardList.slice(24, 29),
+        // cards: shuffledCardList.slice(24, 29),
+        cards: [],
         visibleCardCount: 1,
       },
       deck6: {
-        cards: shuffledCardList.slice(29, 34),
+        // cards: shuffledCardList.slice(29, 34),
+        cards: [],
         visibleCardCount: 1,
       },
       deck7: {
-        cards: shuffledCardList.slice(34, 39),
+        // cards: shuffledCardList.slice(34, 39),
+        cards: [],
         visibleCardCount: 1,
       },
       deck8: {
-        cards: shuffledCardList.slice(39, 44),
+        // cards: shuffledCardList.slice(39, 44),
+        cards: [],
         visibleCardCount: 1,
       },
       deck9: {
-        cards: shuffledCardList.slice(44, 49),
+        // cards: shuffledCardList.slice(44, 49),
+        cards: [],
         visibleCardCount: 1,
       },
       deck10: {
-        cards: shuffledCardList.slice(49, 54),
+        // cards: shuffledCardList.slice(49, 54),
+        cards: [],
         visibleCardCount: 1,
       },
     },
@@ -242,24 +264,63 @@ export const getOrderedCardListsFromDecks = (cardDecks) => {
 
 export const getHint = (cardDecks) => {
   const orderedCardLists = getOrderedCardListsFromDecks(cardDecks);
-
   const hints = [];
 
-  for (let i = 0; i < orderedCardLists.length - 1; i += 1) {
-    const sourceDeck = orderedCardLists[i];
-    for (let j = 0; j < orderedCardLists.length; j += 1) {
-      const destinationDeck = orderedCardLists[j];
+  for (
+    let sourceDeckNo = 0;
+    sourceDeckNo < orderedCardLists.length;
+    sourceDeckNo += 1
+  ) {
+    const sourceDeck = orderedCardLists[sourceDeckNo];
 
-      if (
-        sourceDeck.cards.at(0) ===
-        destinationDeck.cards.at(-1) + 1
+    for (
+      let subSourceDeckStartingIndex = 0;
+      subSourceDeckStartingIndex < sourceDeck.cards.length;
+      subSourceDeckStartingIndex += 1
+    ) {
+      for (
+        let destinationDeckNo = 0;
+        destinationDeckNo < orderedCardLists.length;
+        destinationDeckNo += 1
       ) {
-        hints.push({
-          sourceDeckId: `deck${i + 1}`,
-          destinationDeckId: `deck${j + 1}`,
-          sourceStartingIndex: sourceDeck.startingIndex,
-          destinationStartingIndex: destinationDeck.startingIndex,
-        });
+        const destinationDeck = orderedCardLists[destinationDeckNo];
+
+        // (a && b && c) || (a && b') = (a && b') || (a && c)
+        // a : the first card of the deck to be dragged must match the last card of destination
+        // b : the parent of the child deck to be dragged must be the same as the parent of the destination
+        // c : the deck containing the sub-deck to be dragged must be shorter than the destination deck
+
+        if (
+          (sourceDeck.cards
+            .slice(subSourceDeckStartingIndex)
+            .at(0) ===
+            destinationDeck.cards.at(-1) + 1 &&
+            sourceDeck.cards.at(
+              sourceDeck.startingIndex +
+                subSourceDeckStartingIndex -
+                1
+            ) !== destinationDeck.cards.at(-1)) ||
+          (sourceDeck.cards
+            .slice(subSourceDeckStartingIndex)
+            .at(0) ===
+            destinationDeck.cards.at(-1) + 1 &&
+            destinationDeck.cards.length > sourceDeck.cards.length)
+        ) {
+          hints.push({
+            sourceDeckId: `deck${sourceDeckNo + 1}`,
+            destinationDeckId: `deck${destinationDeckNo + 1}`,
+            sourceStartingIndex: subSourceDeckStartingIndex,
+            destinationStartingIndex: destinationDeck.startingIndex,
+          });
+        }
+
+        /*
+          sourceDeck.cards.slice(subSourceDeckStartingIndex).at(0) ===
+            destinationDeck.cards.at(-1) + 1 &&
+          sourceDeck.cards.at(
+            sourceDeck.startingIndex + subSourceDeckStartingIndex - 1
+          ) !== destinationDeck.cards.at(-1)
+        */
       }
     }
   }

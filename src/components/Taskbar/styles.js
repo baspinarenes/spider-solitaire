@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Taskbar = styled.section`
   display: flex;
+  overflow: hidden;
   height: 35px;
   background: linear-gradient(
     rgb(31, 47, 134) 0px,
@@ -25,6 +26,10 @@ export const Taskbar = styled.section`
   button {
     &:hover {
       filter: brightness(105%);
+    }
+
+    img {
+      height: 100%;
     }
   }
 `;
@@ -65,11 +70,12 @@ export const Task = styled.button`
 `;
 
 export const Toolbar = styled.div`
+  height: 100%;
   color: white;
   width: fit-content;
-  padding: 4px 15px 0 10px;
+  padding: 4px 15px 3px 10px;
   display: flex;
-  font-size: 0.85rem;
+  font-size: 0.65rem;
   gap: 5px;
   align-items: center;
   border-left: 3px solid rgb(16, 66, 175);

@@ -25,8 +25,8 @@ const Login = ({ setIsLoggedIn }) => {
       <footer>
         <div>
           <Styled.ShutdownButton onClick={play}>
-            <img src={WindowsXPShutdown} alt="" />
-            <span>Turn of computer</span>
+            <img src={WindowsXPShutdown} alt="shutdown icon" />
+            <span>Turn off computer</span>
           </Styled.ShutdownButton>
         </div>
         <Styled.FooterDescribe>

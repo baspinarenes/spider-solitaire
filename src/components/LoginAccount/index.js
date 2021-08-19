@@ -10,8 +10,6 @@ const LoginAccount = ({ isGuest, setIsLoggedIn }) => {
   const [username, setUsername] = useState(user.username);
   const [play] = useSound(OpeningMusic, { volume: 0.15 });
 
-  console.log(isGuest);
-
   const handleAccountClick = (e) => {
     e.preventDefault();
 

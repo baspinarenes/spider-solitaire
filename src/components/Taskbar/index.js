@@ -18,7 +18,7 @@ const Taskbar = (props) => {
       <button type="button">
         <img
           src={XpStartButton}
-          alt="winxp start"
+          alt="win xp start"
           height="35"
           width="110"
         />

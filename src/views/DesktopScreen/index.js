@@ -17,7 +17,10 @@ const DesktopScreen = () => {
       <Styled.ProgramContainer>
         {!isSolitaireActive ? (
           <Styled.ProgramList>
-            <Styled.Program onDoubleClick={handleClickProgram}>
+            <Styled.Program
+              onDoubleClick={handleClickProgram}
+              onTouchStart={handleClickProgram}
+            >
               <img
                 src={SolitaireIcon}
                 alt=""

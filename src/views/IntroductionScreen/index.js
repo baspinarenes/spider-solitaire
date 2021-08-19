@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Splash from '../../components/Splash';
 import Login from '../../components/Login';
+import * as Styled from './styles';
 
 const IntroductionScreen = (props) => {
   const { setIsLoggedIn } = props;
@@ -14,13 +15,13 @@ const IntroductionScreen = (props) => {
   }, []);
 
   return (
-    <div id="introduction-screen">
+    <Styled.Introduction>
       {onSplash ? (
         <Splash />
       ) : (
         <Login setIsLoggedIn={setIsLoggedIn} />
       )}
-    </div>
+    </Styled.Introduction>
   );
 };
 

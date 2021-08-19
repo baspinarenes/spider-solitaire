@@ -11,6 +11,7 @@ import DealCardsSound from '../../assets/audios/deal-cards.ogg';
 import HintSound from '../../assets/audios/hint.ogg';
 import NoHintSound from '../../assets/audios/no-hint.ogg';
 import WinSound from '../../assets/audios/win.ogg';
+import CannotDealSound from '../../assets/audios/cannot-deal.ogg';
 
 const SolitaireGame = (props) => {
   const { setIsSolitaireActive } = props;
@@ -39,6 +40,10 @@ const SolitaireGame = (props) => {
   });
 
   const [playWinSound] = useSound(WinSound, {
+    volume: 1,
+  });
+
+  const [playCannotDealSound] = useSound(CannotDealSound, {
     volume: 1,
   });
 
@@ -102,7 +107,8 @@ const SolitaireGame = (props) => {
     playDealCardsSound();
     const [returnCardDecks, returnDealingDecks] = deal(
       cardDecks,
-      dealingDecks
+      dealingDecks,
+      playCannotDealSound
     );
     setCardDecks(returnCardDecks);
     setDealingDecks(returnDealingDecks);

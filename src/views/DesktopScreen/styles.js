@@ -2,15 +2,14 @@ import styled from 'styled-components';
 import XpBackground from '../../assets/images/win-xp-background.webp';
 
 export const Desktop = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(${XpBackground});
 `;
 
 export const ProgramContainer = styled.main`
-  height: calc(100vh - 35px);
+  height: calc(100% - 35px);
 `;
 
 export const ProgramList = styled.main`

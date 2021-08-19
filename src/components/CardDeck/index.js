@@ -3,7 +3,6 @@ import { Draggable } from 'react-beautiful-dnd';
 import useSound from 'use-sound';
 import Card from '../Card';
 import * as Styled from './styles';
-import CardPlaceholder from '../../assets/images/cards/card-placeholder.png';
 import { GameContext } from '../../contexts/GameContext';
 import { getIndexWhichNextCardsDraggable } from '../../utils/cardUtils';
 import MouseDownSound from '../../assets/audios/mouse-down.ogg';
@@ -21,14 +20,6 @@ const CardDeck = React.forwardRef((props, ref) => {
   };
 
   function getStyle(style, snapshot, dId, index) {
-    console.log(
-      'dId: ',
-      dId,
-      ' index: ',
-      index,
-      ' hint.sourceStartingIndex <= index: ',
-      hint.sourceStartingIndex <= index
-    );
     /* 
     This function overrides the default gliding behavior of the react-beautiful-dnd 
     package when the drag is above the other draggable object.
@@ -80,53 +71,45 @@ const CardDeck = React.forwardRef((props, ref) => {
   return (
     'cards' in deck && (
       <Styled.Deck ref={ref}>
-        {deck.cards.length === 0 ? (
-          <img
-            src={CardPlaceholder}
-            alt=""
-            style={{ width: '100%', maxWidth: '74px' }}
-          />
-        ) : (
-          deck.cards.map((id, index) => (
-            <Draggable
-              key={`deck${deckId}${index}`}
-              draggableId={`deck${deckId}${index}`}
-              index={index}
-              isDragDisabled={index < indexWhichNextCardsDraggable}
-            >
-              {(provided, snapshot) => {
-                return (
-                  <div
-                    role="none"
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    style={getStyle(
-                      provided.draggableProps.style,
-                      snapshot,
-                      `deck${deckId}`,
-                      index
-                    )}
-                    onMouseDown={
-                      index >= indexWhichNextCardsDraggable
-                        ? handleMouseDownFromCard
-                        : undefined
+        {deck.cards.map((id, index) => (
+          <Draggable
+            key={`deck${deckId}${index}`}
+            draggableId={`deck${deckId}${index}`}
+            index={index}
+            isDragDisabled={index < indexWhichNextCardsDraggable}
+          >
+            {(provided, snapshot) => {
+              return (
+                <div
+                  role="none"
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                  style={getStyle(
+                    provided.draggableProps.style,
+                    snapshot,
+                    `deck${deckId}`,
+                    index
+                  )}
+                  onMouseDown={
+                    index >= indexWhichNextCardsDraggable
+                      ? handleMouseDownFromCard
+                      : undefined
+                  }
+                >
+                  <Card
+                    deckId={deckId}
+                    cardId={id}
+                    isClose={
+                      index <
+                      deck.cards.length - deck.visibleCardCount
                     }
-                  >
-                    <Card
-                      deckId={deckId}
-                      cardId={id}
-                      isClose={
-                        index <
-                        deck.cards.length - deck.visibleCardCount
-                      }
-                    />
-                  </div>
-                );
-              }}
-            </Draggable>
-          ))
-        )}
+                  />
+                </div>
+              );
+            }}
+          </Draggable>
+        ))}
       </Styled.Deck>
     )
   );

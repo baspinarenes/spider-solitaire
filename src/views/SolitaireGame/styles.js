@@ -9,24 +9,22 @@ export const Board = styled.div`
   background-image: url(${SolitaireBackground});
   background-size: cover;
   display: grid;
-  grid-template-rows: 1fr 70px;
+  grid-template-rows: 1fr 50px;
 
   @media (min-width: 500px) {
     padding: 20px 30px;
-  }
-
-  @media (min-width: 800px) {
     grid-template-rows: 1fr 100px;
   }
 `;
 
 export const BottomArea = styled.div`
-  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  height: 50px;
 
-  @media (min-width: 800px) {
+  @media (min-width: 500px) {
     height: 100px;
   }
 `;
@@ -34,17 +32,21 @@ export const BottomArea = styled.div`
 export const HintArea = styled.div`
   padding: 7px;
   height: 100%;
+  flex-grow: 1;
   max-width: 180px;
   min-width: 100px;
-  flex-grow: 1;
   background-color: green;
   border: 1px solid black;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   cursor: url(${ClickableCursor}), pointer;
+
+  @media (min-width: 500px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const Hint = styled.div`
@@ -65,26 +67,45 @@ export const Hint = styled.div`
 `;
 
 export const CompletedArea = styled.div`
-  height: inherit;
-  width: 130px;
-  display: grid;
-  grid-template-columns: repeat(11, 10px);
-  align-items: center;
-  direction: ltr;
+  width: 110px;
+  height: 100%;
+  display: inline-flex;
 
   .card {
-    height: inherit;
-    width: auto;
+    &:not(:first-child) {
+      margin-left: -30px;
+
+      @media (min-width: 500px) {
+        margin-left: -43px;
+      }
+    }
+
     img {
       height: 100%;
-      width: auto;
     }
   }
 `;
 
-export const DealArea = styled(CompletedArea)`
-  direction: rtl;
+export const DealArea = styled.div`
+  width: 110px;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: row-reverse;
   cursor: url(${ClickableCursor}), pointer;
+
+  .card {
+    &:not(:last-child) {
+      margin-left: -30px;
+
+      @media (min-width: 500px) {
+        margin-left: -62px;
+      }
+    }
+
+    img {
+      height: 100%;
+    }
+  }
 `;
 
 const colorChange = keyframes`
@@ -128,8 +149,8 @@ export const WinScreen = styled.div`
 `;
 
 export const Window = styled.div`
-  height: 100%;
   background-color: white;
+  height: 100%;
   display: grid;
   grid-template-rows: 30px 20px 1fr;
   grid-template-columns: 100%;

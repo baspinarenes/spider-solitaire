@@ -10,7 +10,7 @@ const loadingAnimation = keyframes`
 `;
 
 export const Splash = styled.div`
-  height: 100vh;
+  height: 100%;
   background-color: black;
   padding: 7px 33px;
   color: white;
@@ -19,7 +19,7 @@ export const Splash = styled.div`
   cursor: none;
 
   main {
-    height: calc(100vh - 60px - 14px);
+    height: calc(100% - 60px - 14px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,6 +31,7 @@ export const Splash = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 0.7em;
   }
 `;
 

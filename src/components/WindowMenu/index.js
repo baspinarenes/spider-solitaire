@@ -4,6 +4,7 @@ import * as Styled from './styles';
 import { GameContext } from '../../contexts/GameContext';
 import { deal, newGame } from '../../utils/cardUtils';
 import DealCardsSound from '../../assets/audios/deal-cards.ogg';
+import CannotDealSound from '../../assets/audios/cannot-deal.ogg';
 
 const WindowMenu = () => {
   const {
@@ -18,11 +19,16 @@ const WindowMenu = () => {
     volume: 1,
   });
 
+  const [playCannotDealSound] = useSound(CannotDealSound, {
+    volume: 1,
+  });
+
   const handleDealClick = () => {
     playDealCardsSound();
     const [returnCardDecks, returnDealingDecks] = deal(
       cardDecks,
-      dealingDecks
+      dealingDecks,
+      playCannotDealSound
     );
     setCardDecks(returnCardDecks);
     setDealingDecks(returnDealingDecks);

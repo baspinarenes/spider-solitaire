@@ -51,4 +51,6 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const WindowBody = styled.div``;
+export const WindowBody = styled.div`
+  height: 100%;
+`;

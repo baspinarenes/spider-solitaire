@@ -8,6 +8,17 @@
   user-select: none;
 }
 
+body,
+html,
+#app,
+#root {
+  height: 100%;
+}
+
+html {
+  font-size: max(1.35vw, 1.15rem);
+}
+
 body {
   cursor: url(./assets/cursors/cursor-normal.cur), auto;
   overflow: hidden;

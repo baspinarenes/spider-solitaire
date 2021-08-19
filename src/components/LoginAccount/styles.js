@@ -41,4 +41,14 @@ export const LoginAccountButton = styled.button`
     font-size: 1.3rem;
     color: white;
   }
+
+  &:nth-child(2) {
+    display: none;
+  }
+
+  @media (min-width: 600px) {
+    &:nth-child(2) {
+      display: flex;
+    }
+  }
 `;
