@@ -6,7 +6,13 @@ import * as Styled from './styles';
 import Card from '../../components/Card';
 import DeckArea from '../../components/DeckArea';
 import { GameContext } from '../../contexts/GameContext';
-import { moveCards, deal, getHint } from '../../utils/cardUtils';
+import { UserContext } from '../../contexts/UserContext';
+import {
+  moveCards,
+  deal,
+  getHint,
+  newGame,
+} from '../../utils/cardUtils';
 import DealCardsSound from '../../assets/audios/deal-cards.ogg';
 import HintSound from '../../assets/audios/hint.ogg';
 import NoHintSound from '../../assets/audios/no-hint.ogg';
@@ -26,6 +32,8 @@ const SolitaireGame = (props) => {
     setGameStats,
     setHint,
   } = useContext(GameContext);
+
+  const { user } = useContext(UserContext);
 
   const [playDealCardsSound] = useSound(DealCardsSound, {
     volume: 1,
@@ -125,9 +133,18 @@ const SolitaireGame = (props) => {
         destinationDeckId: hint.destinationDeckId,
         destinationStartingIndex: hint.destinationStartingIndex,
       });
+
+      const previousGameStats = { ...gameStats };
+      previousGameStats.score -= 10;
+
+      setGameStats(previousGameStats);
     } else {
       playNoHintSound();
     }
+  };
+
+  const handleClickNewGame = () => {
+    newGame(setCardDecks, setDealingDecks, setGameStats);
   };
 
   let isGameFinished = false;
@@ -176,6 +193,24 @@ const SolitaireGame = (props) => {
           <Styled.WinScreen isGameFinished={isGameFinished}>
             <span>You Won!</span>
           </Styled.WinScreen>
+          <Styled.Window
+            style={{ display: isGameFinished ? 'grid' : 'none' }}
+          >
+            <Styled.TitleBar>
+              <span>Game Over</span>
+              <Styled.CloseButton />
+            </Styled.TitleBar>
+
+            <Styled.WindowBody>
+              Congratulations {user.username}, you won with{' '}
+              {gameStats.score}!
+              <br />
+              Dou you want to start another game?
+              <button type="button" onClick={handleClickNewGame}>
+                Yes
+              </button>
+            </Styled.WindowBody>
+          </Styled.Window>
         </Styled.Board>
       </DragDropContext>
     </XPWindow>

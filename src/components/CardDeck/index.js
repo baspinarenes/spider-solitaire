@@ -25,6 +25,14 @@ const CardDeck = React.forwardRef((props, ref) => {
     package when the drag is above the other draggable object.
     */
 
+    if (snapshot.isDropAnimating) {
+      return {
+        ...style,
+        // cannot be 0, but make it super tiny
+        transitionDuration: '0.001s',
+      };
+    }
+
     if (snapshot.isDragging) {
       // We do not apply it to the being dragged object so that the drag behavior can continue.
       return style;
@@ -36,8 +44,8 @@ const CardDeck = React.forwardRef((props, ref) => {
     ) {
       return {
         ...style,
-        // We ovveride the "translate(... px)" that performs the sliding behavior as "none".
         display: 'none',
+        // We ovveride the "translate(... px)" that performs the sliding behavior as "none".
         transform: 'none',
       };
     }
@@ -70,7 +78,8 @@ const CardDeck = React.forwardRef((props, ref) => {
 
   return (
     'cards' in deck && (
-      <Styled.Deck ref={ref}>
+      <Styled.Deck ref={ref} deckLength={deck.cards.length}>
+        <div className="empty-border" />
         {deck.cards.map((id, index) => (
           <Draggable
             key={`deck${deckId}${index}`}

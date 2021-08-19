@@ -2,6 +2,10 @@ import styled, { keyframes } from 'styled-components';
 import SolitaireBackground from '../../assets/images/solitaire-background.png';
 import ClickableCursor from '../../assets/cursors/cursor-clickable.cur';
 
+import CloseSVG from '../../assets/images/close.svg';
+import CloseHoverSVG from '../../assets/images/close-hover.svg';
+import CloseActiveSVG from '../../assets/images/close-active.svg';
+
 export const Board = styled.div`
   position: relative;
   height: 100%;
@@ -32,8 +36,9 @@ export const BottomArea = styled.div`
 export const HintArea = styled.div`
   padding: 7px;
   height: 100%;
+  margin: 0 10px;
   flex-grow: 1;
-  max-width: 180px;
+  max-width: 130px;
   min-width: 100px;
   background-color: green;
   border: 1px solid black;
@@ -46,6 +51,7 @@ export const HintArea = styled.div`
 
   @media (min-width: 500px) {
     font-size: 0.8rem;
+    max-width: 180px;
   }
 `;
 
@@ -54,7 +60,6 @@ export const Hint = styled.div`
   background-color: green;
   display: flex;
   gap: 10px;
-  font-weight: bold;
 
   span {
     display: inline-block;
@@ -76,7 +81,7 @@ export const CompletedArea = styled.div`
       margin-left: -30px;
 
       @media (min-width: 500px) {
-        margin-left: -43px;
+        margin-left: -62px;
       }
     }
 
@@ -149,14 +154,25 @@ export const WinScreen = styled.div`
 `;
 
 export const Window = styled.div`
-  background-color: white;
-  height: 100%;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 140px;
+  width: 270px;
   display: grid;
-  grid-template-rows: 30px 20px 1fr;
+  grid-template-rows: 30px 1fr;
   grid-template-columns: 100%;
+  border: 2px solid rgba(0, 102, 255, 1);
 `;
 
 export const TitleBar = styled.div`
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+
   font-family: 'Trebuchet MS';
   background: linear-gradient(
     180deg,
@@ -177,5 +193,55 @@ export const TitleBar = styled.div`
 
   img {
     height: 100%;
+  }
+`;
+
+export const CloseButton = styled.button`
+  margin-left: auto;
+  width: 23px;
+  height: 23px;
+  background-image: url(${CloseSVG});
+  background-repeat: no-repeat;
+
+  &:hover {
+    background-image: url(${CloseHoverSVG});
+  }
+
+  &:not(:disabled):active {
+    background-image: url(${CloseActiveSVG});
+  }
+`;
+
+export const WindowBody = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ece9d8;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.6rem;
+  line-height: 30px;
+
+  button {
+    font-size: 0.55rem;
+    color: black;
+    background-color: white;
+    width: 60px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 0 auto;
+
+    &:hover {
+      box-shadow: orange 0px 0px 0px 1px inset;
+    }
+
+    &:active {
+      box-shadow: rgba(0, 102, 255, 1) 0px 0px 0px 1px inset;
+
+      ${Window} {
+        display: none;
+      }
+    }
   }
 `;

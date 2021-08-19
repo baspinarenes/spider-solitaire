@@ -18,7 +18,7 @@ export const DeckArea = styled.div`
   }
 
   @media (min-width: 500px) {
-    grid-template-columns: repeat(10, 7vw);
+    grid-template-columns: repeat(10, min(9%, 71px));
     grid-template-rows: 1fr;
     gap: 10px;
   }

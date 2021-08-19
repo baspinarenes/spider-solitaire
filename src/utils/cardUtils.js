@@ -146,53 +146,43 @@ export const getRandomDecks = () => {
   return [
     {
       deck1: {
-        // cards: shuffledCardList.slice(0, 6),
-        cards: [10, 11, 12],
-        visibleCardCount: 3,
+        cards: shuffledCardList.slice(0, 6),
+        visibleCardCount: 1,
       },
       deck2: {
-        // cards: shuffledCardList.slice(6, 12),
-        cards: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        visibleCardCount: 10,
+        cards: shuffledCardList.slice(6, 12),
+        visibleCardCount: 1,
       },
       deck3: {
-        // cards: shuffledCardList.slice(12, 18),
-        cards: [12, 13],
-        visibleCardCount: 2,
+        cards: shuffledCardList.slice(12, 18),
+        visibleCardCount: 1,
       },
       deck4: {
-        // cards: shuffledCardList.slice(18, 24),
-        cards: [],
+        cards: shuffledCardList.slice(18, 24),
         visibleCardCount: 1,
       },
       deck5: {
-        // cards: shuffledCardList.slice(24, 29),
-        cards: [],
+        cards: shuffledCardList.slice(24, 29),
         visibleCardCount: 1,
       },
       deck6: {
-        // cards: shuffledCardList.slice(29, 34),
-        cards: [],
+        cards: shuffledCardList.slice(29, 34),
         visibleCardCount: 1,
       },
       deck7: {
-        // cards: shuffledCardList.slice(34, 39),
-        cards: [],
+        cards: shuffledCardList.slice(34, 39),
         visibleCardCount: 1,
       },
       deck8: {
-        // cards: shuffledCardList.slice(39, 44),
-        cards: [],
+        cards: shuffledCardList.slice(39, 44),
         visibleCardCount: 1,
       },
       deck9: {
-        // cards: shuffledCardList.slice(44, 49),
-        cards: [],
+        cards: shuffledCardList.slice(44, 49),
         visibleCardCount: 1,
       },
       deck10: {
-        // cards: shuffledCardList.slice(49, 54),
-        cards: [],
+        cards: shuffledCardList.slice(49, 54),
         visibleCardCount: 1,
       },
     },
@@ -295,32 +285,22 @@ export const getHint = (cardDecks) => {
             .slice(subSourceDeckStartingIndex)
             .at(0) ===
             destinationDeck.cards.at(-1) + 1 &&
-            sourceDeck.cards.at(
-              sourceDeck.startingIndex +
-                subSourceDeckStartingIndex -
-                1
-            ) !== destinationDeck.cards.at(-1)) ||
+            sourceDeck.cards.at(subSourceDeckStartingIndex - 1) !==
+              destinationDeck.cards.at(-1)) ||
           (sourceDeck.cards
             .slice(subSourceDeckStartingIndex)
             .at(0) ===
             destinationDeck.cards.at(-1) + 1 &&
-            destinationDeck.cards.length > sourceDeck.cards.length)
+            destinationDeck.cards.length > subSourceDeckStartingIndex)
         ) {
           hints.push({
             sourceDeckId: `deck${sourceDeckNo + 1}`,
             destinationDeckId: `deck${destinationDeckNo + 1}`,
-            sourceStartingIndex: subSourceDeckStartingIndex,
+            sourceStartingIndex:
+              sourceDeck.startingIndex + subSourceDeckStartingIndex,
             destinationStartingIndex: destinationDeck.startingIndex,
           });
         }
-
-        /*
-          sourceDeck.cards.slice(subSourceDeckStartingIndex).at(0) ===
-            destinationDeck.cards.at(-1) + 1 &&
-          sourceDeck.cards.at(
-            sourceDeck.startingIndex + subSourceDeckStartingIndex - 1
-          ) !== destinationDeck.cards.at(-1)
-        */
       }
     }
   }
