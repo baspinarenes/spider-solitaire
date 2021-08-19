@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import useSound from 'use-sound';
 import XPWindow from '../../components/XPWindow';
@@ -54,6 +54,8 @@ const SolitaireGame = (props) => {
   const [playCannotDealSound] = useSound(CannotDealSound, {
     volume: 1,
   });
+
+  const [isGameFinished, setIsGameFinished] = useState(false);
 
   const handleOnDragEnd = (result) => {
     const { source, destination } = result;
@@ -113,11 +115,13 @@ const SolitaireGame = (props) => {
 
   const handleDealClick = () => {
     playDealCardsSound();
+
     const [returnCardDecks, returnDealingDecks] = deal(
       cardDecks,
       dealingDecks,
       playCannotDealSound
     );
+
     setCardDecks(returnCardDecks);
     setDealingDecks(returnDealingDecks);
   };
@@ -147,11 +151,9 @@ const SolitaireGame = (props) => {
     newGame(setCardDecks, setDealingDecks, setGameStats);
   };
 
-  let isGameFinished = false;
-
   if (gameStats.completedDeckCount === 8) {
     playWinSound();
-    isGameFinished = true;
+    setIsGameFinished(true);
   }
 
   return (

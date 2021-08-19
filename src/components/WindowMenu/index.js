@@ -46,7 +46,6 @@ const WindowMenu = () => {
           <Styled.SubMenuButton onClick={handleClickNewGame}>
             New Game
           </Styled.SubMenuButton>
-          <Styled.SubMenuButton>Statistics</Styled.SubMenuButton>
         </Styled.MenuContent>
       </Styled.MenuItem>
       <Styled.MenuItem>
