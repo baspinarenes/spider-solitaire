@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import SolitaireBackground from '../../assets/images/solitaire-background.png';
 import ClickableCursor from '../../assets/cursors/cursor-clickable.cur';
 
 import CloseSVG from '../../assets/images/close.svg';
@@ -10,7 +9,7 @@ export const Board = styled.div`
   position: relative;
   height: 100%;
   padding: 10px;
-  background-image: url(${SolitaireBackground});
+  background-image: url(${`${process.env.PUBLIC_URL}/solitaire-background.webp`});
   background-size: cover;
   display: grid;
   grid-template-rows: 1fr 50px;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import XpStartButton from '../../assets/images/win-xp-start-button.webp';
+import XpStartButton from '../../assets/images/winxp-start-button.webp';
 import MsnIcon from '../../assets/images/msn-icon.webp';
 import SolitaireIcon from '../../assets/images/solitaire-icon.webp';
 import * as Styled from './styles';

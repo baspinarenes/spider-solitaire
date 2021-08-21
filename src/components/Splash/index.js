@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styled from './styles';
-import WindowsXPLogo from '../../assets/images/win-xp-logo.webp';
+import WindowsXPLogo from '../../assets/images/winxp-logo.webp';
 import MicrosoftLogo from '../../assets/images/microsoft-logo.webp';
 
 const Splash = () => {

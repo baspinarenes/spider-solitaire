@@ -1,8 +1,8 @@
 import React from 'react';
 import useSound from 'use-sound';
 import * as Styled from './styles';
-import WindowsXPShutdown from '../../assets/images/win-xp-shutdown.webp';
-import WindowsXPLogo2 from '../../assets/images/win-xp-logo2.webp';
+import WindowsXPShutdown from '../../assets/images/winxp-shutdown.webp';
+import WindowsXPLogo2 from '../../assets/images/winxp-logo2.webp';
 import LoginAccount from '../LoginAccount';
 import ShutdownSound from '../../assets/audios/shutdown.ogg';
 

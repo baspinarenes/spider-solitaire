@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import XpBackground from '../../assets/images/win-xp-background.webp';
 
 export const Desktop = styled.div`
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(${XpBackground});
+  background-image: url(${`${process.env.PUBLIC_URL}/winxp-background.webp`});
 `;
 
 export const ProgramContainer = styled.main`
