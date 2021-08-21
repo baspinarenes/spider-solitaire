@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spider-solitaire/static/css/main.8312effe.chunk.css",
-    "main.js": "/spider-solitaire/static/js/main.6baf42a0.chunk.js",
-    "main.js.map": "/spider-solitaire/static/js/main.6baf42a0.chunk.js.map",
+    "main.js": "/spider-solitaire/static/js/main.72fc2cee.chunk.js",
+    "main.js.map": "/spider-solitaire/static/js/main.72fc2cee.chunk.js.map",
     "runtime-main.js": "/spider-solitaire/static/js/runtime-main.dd338a07.js",
     "runtime-main.js.map": "/spider-solitaire/static/js/runtime-main.dd338a07.js.map",
     "static/js/2.0a372dc8.chunk.js": "/spider-solitaire/static/js/2.0a372dc8.chunk.js",
@@ -42,19 +42,17 @@
     "static/media/no-hint.08835341.ogg": "/spider-solitaire/static/media/no-hint.08835341.ogg",
     "static/media/opening.06e92163.ogg": "/spider-solitaire/static/media/opening.06e92163.ogg",
     "static/media/shutdown.dddbce6a.ogg": "/spider-solitaire/static/media/shutdown.dddbce6a.ogg",
-    "static/media/solitaire-background.48fb644a.png": "/spider-solitaire/static/media/solitaire-background.48fb644a.png",
     "static/media/solitaire-icon.949145f2.webp": "/spider-solitaire/static/media/solitaire-icon.949145f2.webp",
-    "static/media/win-xp-background.04da327e.webp": "/spider-solitaire/static/media/win-xp-background.04da327e.webp",
-    "static/media/win-xp-logo.9dee7f33.webp": "/spider-solitaire/static/media/win-xp-logo.9dee7f33.webp",
-    "static/media/win-xp-logo2.928167b6.webp": "/spider-solitaire/static/media/win-xp-logo2.928167b6.webp",
-    "static/media/win-xp-shutdown.5a2ac0c4.webp": "/spider-solitaire/static/media/win-xp-shutdown.5a2ac0c4.webp",
-    "static/media/win-xp-start-button.5316ea67.webp": "/spider-solitaire/static/media/win-xp-start-button.5316ea67.webp",
-    "static/media/win.6c8a4ec5.ogg": "/spider-solitaire/static/media/win.6c8a4ec5.ogg"
+    "static/media/win.6c8a4ec5.ogg": "/spider-solitaire/static/media/win.6c8a4ec5.ogg",
+    "static/media/winxp-logo.9dee7f33.webp": "/spider-solitaire/static/media/winxp-logo.9dee7f33.webp",
+    "static/media/winxp-logo2.928167b6.webp": "/spider-solitaire/static/media/winxp-logo2.928167b6.webp",
+    "static/media/winxp-shutdown.5a2ac0c4.webp": "/spider-solitaire/static/media/winxp-shutdown.5a2ac0c4.webp",
+    "static/media/winxp-start-button.5316ea67.webp": "/spider-solitaire/static/media/winxp-start-button.5316ea67.webp"
   },
   "entrypoints": [
     "static/js/runtime-main.dd338a07.js",
     "static/js/2.0a372dc8.chunk.js",
     "static/css/main.8312effe.chunk.css",
-    "static/js/main.6baf42a0.chunk.js"
+    "static/js/main.72fc2cee.chunk.js"
   ]
 }
