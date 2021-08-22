@@ -18,7 +18,6 @@ const SolitaireGame = () => {
     cardDecks,
     setCardDecks,
     setIndicesOfSelectedCards,
-    setDealingDecks,
     gameStats,
     setGameStats,
     setHint,
@@ -114,12 +113,7 @@ const SolitaireGame = () => {
               cardDecks={cardDecks}
             />
           </Styled.BottomArea>
-          <GameOver
-            setCardDecks={setCardDecks}
-            setDealingDecks={setDealingDecks}
-            gameStats={gameStats}
-            setGameStats={setGameStats}
-          />
+          {gameStats.completedDeckCount === 8 && <GameOver />}
         </Styled.Board>
       </DragDropContext>
     </Window>

@@ -68,7 +68,7 @@ const UserAccount = (props) => {
         height="60"
       />
       {isGuest ? (
-        <span>Guest</span>
+        <span>Guesta</span>
       ) : (
         <input
           type="text"
