@@ -1,7 +1,7 @@
 name: Deployment
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -9,22 +9,20 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
           persist-credentials: false
-        
-    - name: Install Packages
-      run: npm ci
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
-        
-      
+
+      - name: Install Packages
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
