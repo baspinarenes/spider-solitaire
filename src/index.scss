@@ -20,21 +20,6 @@ html {
 }
 
 body {
-  cursor: url(./assets/cursors/cursor-normal.cur), auto;
+  cursor: url(./assets/cursors/normal.cur), auto;
   overflow: hidden;
-}
-
-button {
-  background: transparent;
-  border: 0;
-  color: white;
-}
-
-button:hover,
-a:hover {
-  cursor: url(./assets/cursors/cursor-clickable.cur), auto;
-}
-
-ul {
-  list-style-type: none;
 }
