@@ -10,7 +10,8 @@ export const CompletedDeckArea = styled.div`
     &:not(:first-child) {
       margin-left: -30px;
 
-      @media (min-width: 500px) {
+      @media (min-width: ${(props) =>
+          props.theme.breakpoints.smallTablet}) {
         margin-left: -62px;
       }
     }

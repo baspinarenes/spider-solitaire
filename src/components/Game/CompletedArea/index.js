@@ -17,7 +17,7 @@ const CompletedDeckArea = (props) => {
   return (
     <Styled.CompletedDeckArea>
       {React.Children.toArray(
-        Array(completedDeckCount).fill(<Card cardId={1} />)
+        Array(completedDeckCount).fill(<Card cardNo={1} />)
       )}
     </Styled.CompletedDeckArea>
   );

@@ -1,4 +1,6 @@
+// Libraries
 import React, { useState, useEffect, createContext } from 'react';
+// Components | Utils
 import { getRandomDecks } from '../utils/cardUtils';
 
 export const GameContext = createContext();
@@ -21,10 +23,11 @@ const GameContextProvider = (props) => {
 
   const [dealingDecks, setDealingDecks] = useState([]);
   const [isAnyDragging, setIsAnyDragging] = useState(false);
-  const [selectedCards, setSelectedCards] = useState({
-    deckId: '',
-    items: [],
-  });
+  const [indicesOfSelectedCards, setIndicesOfSelectedCards] =
+    useState({
+      deckId: '',
+      items: [],
+    });
 
   const [gameStats, setGameStats] = useState({
     completedDeckCount: 0,
@@ -34,11 +37,17 @@ const GameContextProvider = (props) => {
 
   const [hint, setHint] = useState({});
 
+  /*
+  ====================================================
+  ================== USE EFFECT ======================
+  ====================================================
+  */
+
   useEffect(() => {
     if (Object.keys(hint).length > 0) {
       setTimeout(() => {
         setHint({});
-      }, 1500);
+      }, 1000);
     }
   }, [hint]);
 
@@ -48,6 +57,12 @@ const GameContextProvider = (props) => {
     setDealingDecks(dDecks);
   }, []);
 
+  /*
+  ====================================================
+  ==================== RENDER ========================
+  ====================================================
+  */
+
   return (
     <GameContext.Provider
       value={{
@@ -55,8 +70,8 @@ const GameContextProvider = (props) => {
         setCardDecks,
         isAnyDragging,
         setIsAnyDragging,
-        selectedCards,
-        setSelectedCards,
+        indicesOfSelectedCards,
+        setIndicesOfSelectedCards,
         dealingDecks,
         setDealingDecks,
         gameStats,

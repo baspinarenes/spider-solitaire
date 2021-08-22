@@ -17,7 +17,7 @@ const SolitaireGame = () => {
   const {
     cardDecks,
     setCardDecks,
-    setSelectedCards,
+    setIndicesOfSelectedCards,
     setDealingDecks,
     gameStats,
     setGameStats,
@@ -33,7 +33,7 @@ const SolitaireGame = () => {
   const handleOnDragEnd = (result) => {
     const { source, destination } = result;
 
-    setSelectedCards({
+    setIndicesOfSelectedCards({
       deckId: '',
       items: [],
     });
@@ -74,7 +74,7 @@ const SolitaireGame = () => {
     const sourceDeckId = source.droppableId;
     const sourceDeck = { ...cardDecks[sourceDeckId] };
 
-    setSelectedCards({
+    setIndicesOfSelectedCards({
       deckId: sourceDeckId,
       items: Array.from(
         {

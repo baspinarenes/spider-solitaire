@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 // Components | Utils
 import { UserContext } from '../../../contexts/UserContext';
 import Window from '../../PreGame/Window';
@@ -12,7 +12,6 @@ const GameOver = (props) => {
   const { setCardDecks, setDealingDecks, gameStats, setGameStats } =
     props;
   const { user } = useContext(UserContext);
-  const [isGameFinished, setIsGameFinished] = useState(false);
   const [winSound] = getSounds('win');
 
   /*
@@ -21,8 +20,10 @@ const GameOver = (props) => {
   ====================================================
   */
 
+  let isGameFinished = false;
+
   const handleNewGameClick = () => {
-    setIsGameFinished(false);
+    isGameFinished = false;
     const [cDecks, dDecks] = newGame();
     setCardDecks(cDecks);
     setDealingDecks(dDecks);
@@ -35,7 +36,7 @@ const GameOver = (props) => {
 
   if (gameStats.completedDeckCount === 8) {
     winSound.play();
-    setIsGameFinished(true);
+    isGameFinished = true;
   }
 
   /*

@@ -1,29 +1,21 @@
-import React from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import React, { useContext } from 'react';
 import * as Styled from './styles';
-import CardDeck from '../CardDeck';
+import Deck from '../Deck';
+import { GameContext } from '../../../contexts/GameContext';
 
-const DeckArea = (props) => {
-  const { cardDecks } = props;
+const DeckArea = () => {
+  const { cardDecks } = useContext(GameContext);
+  console.log('RENDER DECKAREA');
+
+  console.log(cardDecks.deck3);
 
   return (
     <Styled.DeckArea>
-      {Array.from({ length: 10 }, (_, i) => i + 1).map((id) => (
-        <Droppable key={`deck${id}`} droppableId={`deck${id}`}>
-          {(provided) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              style={{ height: 'fit-content' }}
-            >
-              <CardDeck deckId={id} deck={cardDecks[`deck${id}`]} />
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
+      {Array.from({ length: 10 }, (_, i) => i + 1).map((no) => (
+        <Deck key={no} deckNo={no} deck={cardDecks[`deck${no}`]} />
       ))}
     </Styled.DeckArea>
   );
 };
 
-export default React.memo(DeckArea);
+export default DeckArea;

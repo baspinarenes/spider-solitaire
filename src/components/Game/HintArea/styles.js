@@ -18,7 +18,8 @@ export const HintArea = styled.div`
   justify-content: center;
   cursor: url(${ClickableCursor}), pointer;
 
-  @media (min-width: 500px) {
+  @media (min-width: ${(props) =>
+      props.theme.breakpoints.smallTablet}) {
     font-size: 0.8rem;
     max-width: 180px;
   }

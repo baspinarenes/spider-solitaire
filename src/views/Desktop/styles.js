@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Desktop = styled.div`
   background-image: url(${`${process.env.PUBLIC_URL}/winxp-background.webp`});
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
+  background-position: center center;
   height: 100%;
 `;
 

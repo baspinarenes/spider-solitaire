@@ -40,7 +40,8 @@ export const UserAccount = styled(styledComponents.Button)`
     display: none;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: ${(props) =>
+      props.theme.breakpoints.smallTablet}) {
     &:nth-child(2) {
       display: flex;
     }
