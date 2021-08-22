@@ -5,9 +5,6 @@ import { GameContext } from '../../../contexts/GameContext';
 
 const DeckArea = () => {
   const { cardDecks } = useContext(GameContext);
-  console.log('RENDER DECKAREA');
-
-  console.log(cardDecks.deck3);
 
   return (
     <Styled.DeckArea>
