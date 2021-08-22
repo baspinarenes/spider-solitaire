@@ -13,7 +13,6 @@ const Deck = (props) => {
     indexWhichNextCardsDraggable =
       getIndexWhichNextCardsDraggable(deck);
   }
-  console.log('RENDER DECK');
 
   return (
     'cards' in deck && (
@@ -52,7 +51,6 @@ const Deck = (props) => {
 };
 
 function arraysEqual(a, b) {
-  console.log('sdasd');
   if (a === b) return false;
   if (a == null || b == null) return true;
   if (a.length !== b.length) return true;

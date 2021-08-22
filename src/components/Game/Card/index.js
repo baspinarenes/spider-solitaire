@@ -68,8 +68,6 @@ const Card = (props) => {
     };
   }
 
-  console.log('RENDER CARD');
-
   return deckNo ? (
     <Draggable
       draggableId={`deck${deckNo}${index}`}
