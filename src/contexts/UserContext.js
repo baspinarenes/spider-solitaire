@@ -9,6 +9,14 @@ const UserContextProvider = (props) => {
     username: '',
   });
 
+  const [isUserSelected, setIsUserSelected] = useState(false);
+
+  /*
+  ====================================================
+  ================== USE EFFECT ======================
+  ====================================================
+  */
+
   useEffect(() => {
     const sessionStoragedUser = sessionStorage.getItem('user');
 
@@ -24,8 +32,16 @@ const UserContextProvider = (props) => {
     sessionStorage.setItem('user', JSON.stringify(user));
   }, [user]);
 
+  /*
+  ====================================================
+  ==================== RENDER ========================
+  ====================================================
+  */
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, isUserSelected, setIsUserSelected }}
+    >
       {children}
     </UserContext.Provider>
   );

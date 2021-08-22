@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
-import IntroductionScreen from './views/IntroductionScreen';
-import DesktopScreen from './views/DesktopScreen';
-import UserContextProvider from './contexts/UserContext';
+// Libraries
+import React, { useContext } from 'react';
+// Components | Utils
+import Introduction from './views/Introduction';
+import Desktop from './views/Desktop';
+import { UserContext } from './contexts/UserContext';
+import DesktopContextProvider from './contexts/DesktopContext';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isUserSelected } = useContext(UserContext);
+
+  /*
+  ====================================================
+  ==================== RENDER ========================
+  ====================================================
+  */
 
   return (
-    <UserContextProvider>
-      <div id="app">
-        {isLoggedIn ? (
-          <DesktopScreen />
-        ) : (
-          <IntroductionScreen setIsLoggedIn={setIsLoggedIn} />
-        )}
-      </div>
-    </UserContextProvider>
+    <div id="app">
+      {isUserSelected ? (
+        <DesktopContextProvider>
+          <Desktop />
+        </DesktopContextProvider>
+      ) : (
+        <Introduction />
+      )}
+    </div>
   );
 }
 
