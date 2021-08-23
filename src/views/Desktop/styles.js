@@ -13,7 +13,7 @@ export const ProgramContainer = styled.main`
   height: calc(100% - 35px);
 `;
 
-export const ProgramList = styled.main`
+export const ProgramList = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
