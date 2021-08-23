@@ -6,7 +6,7 @@ import getSounds from '../../../utils/soundUtils';
 // Assets
 import * as Styled from './styles';
 import WindowsXPShutdown from '../../../assets/images/winxp-shutdown.webp';
-import WindowsXPLogo2 from '../../../assets/images/winxp-logo2.webp';
+import WindowsXPLogo2 from '../../../assets/images/login-logo.webp';
 
 const Login = () => {
   const [shutdownSound] = getSounds('shutdown');
@@ -25,7 +25,7 @@ const Login = () => {
           <img
             src={WindowsXPLogo2}
             alt="windows xp logo"
-            width="200"
+            width="205"
             height="118"
           />
           <span>To begin, select your user</span>
