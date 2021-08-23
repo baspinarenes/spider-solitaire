@@ -38,8 +38,15 @@ const WindowMenu = () => {
     setDealingDecks(returnDealingDecks);
   };
 
-  const handleClickNewGame = () => {
-    newGame(setCardDecks, setDealingDecks, setGameStats);
+  const handleNewGameClick = () => {
+    const [cDecks, dDecks] = newGame();
+    setCardDecks(cDecks);
+    setDealingDecks(dDecks);
+    setGameStats({
+      completedDeckCount: 0,
+      score: 500,
+      moves: 0,
+    });
   };
 
   /*
@@ -53,7 +60,7 @@ const WindowMenu = () => {
       <Styled.MenuItem>
         <Styled.MenuButton>Game</Styled.MenuButton>
         <Styled.MenuContent>
-          <Styled.SubMenuButton onClick={handleClickNewGame}>
+          <Styled.SubMenuButton onClick={handleNewGameClick}>
             New Game
           </Styled.SubMenuButton>
         </Styled.MenuContent>
