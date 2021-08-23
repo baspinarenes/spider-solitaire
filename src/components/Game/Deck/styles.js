@@ -1,4 +1,4 @@
-// Library
+// Libraries
 import styled from 'styled-components';
 
 export const Deck = styled.div`
@@ -8,9 +8,10 @@ export const Deck = styled.div`
     min(16px, 2.5vw)
   );
   height: fit-content;
+  justify-self: center;
   max-width: 71px;
   position: relative;
-  justify-self: center;
+  width: 100%;
 
   @media (min-width: ${(props) =>
       props.theme.breakpoints.smallTablet}) {

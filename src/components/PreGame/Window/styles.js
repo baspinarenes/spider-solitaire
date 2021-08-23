@@ -1,40 +1,29 @@
-import styled, { css } from 'styled-components';
+// Libraries
+import styled from 'styled-components';
+// Components | Utils
+import { styledComponents } from '../../../globalStyles';
+// Assets
 import CloseSVG from '../../../assets/images/close.svg';
 import CloseHoverSVG from '../../../assets/images/close-hover.svg';
 import CloseActiveSVG from '../../../assets/images/close-active.svg';
-import { styledComponents } from '../../../globalStyles';
 
 export const Window = styled.div`
-  height: 100%;
-  width: 100%;
+  background-color: ${(props) => props.theme.colors.xpWindowBg};
   display: grid;
   grid-template-rows: 30px 20px 1fr;
+  height: 100%;
+  width: 100%;
   z-index: 2;
-  background-color: ${(props) => props.theme.colors.xpWindowBg};
-
-  ${(props) =>
-    props.isGameOverWindow &&
-    css`
-      height: ${props?.size.height};
-      width: ${props?.size.width};
-      left: 0;
-      right: 0;
-      bottom: 10px;
-      position: absolute;
-      margin: 0 auto;
-      display: ${!props.isGameFinished && 'none'};
-      grid-template-rows: 30px 1fr;
-    `}
 `;
 
 export const TitleBar = styled.div`
-  font-family: 'Trebuchet MS';
+  align-items: center;
   background: ${(props) => props.theme.gradients.titleBarBg};
-  font-size: 13px;
-  padding: 6px;
   color: ${(props) => props.theme.colors.titleBarText};
   display: flex;
-  align-items: center;
+  font-family: 'Trebuchet MS';
+  font-size: 13px;
+  padding: 6px;
 
   img {
     height: 100%;
@@ -42,11 +31,11 @@ export const TitleBar = styled.div`
 `;
 
 export const CloseButton = styled(styledComponents.Button)`
-  margin-left: auto;
-  width: 23px;
-  height: 23px;
   background-image: url(${CloseSVG});
   background-repeat: no-repeat;
+  height: 23px;
+  margin-left: auto;
+  width: 23px;
 
   &:hover {
     background-image: url(${CloseHoverSVG});

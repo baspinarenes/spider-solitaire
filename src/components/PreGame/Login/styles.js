@@ -1,6 +1,6 @@
 // Libraries
 import styled from 'styled-components';
-// Assets
+// Components | Utils
 import { styledComponents } from '../../../globalStyles';
 
 export const LoginScreen = styled(styledComponents.Screen)`
@@ -34,21 +34,21 @@ export const Main = styled.main`
 `;
 
 export const MainLeft = styled.section`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
   font-size: 1.9rem;
+  gap: 30px;
+  justify-content: center;
 
   @media (min-width: ${(props) =>
       props.theme.breakpoints.smallTablet}) {
-    padding-right: 60px;
-    border-right: 1px solid;
+    align-items: flex-end;
+    border-image-slice: 0 1 0 0;
     border-image-source: ${(props) =>
       props.theme.gradients.loginScreenMiddleBorderColor};
-    border-image-slice: 0 1 0 0;
-    align-items: flex-end;
+    border-right: 1px solid;
+    padding-right: 60px;
   }
 
   img {
@@ -63,10 +63,10 @@ export const MainLeft = styled.section`
 export const MainRight = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 20px;
-  width: minmax(70vw, 90vw);
+  justify-content: center;
   margin: 0 auto;
+  width: minmax(70vw, 90vw);
 
   @media (min-width: ${(props) =>
       props.theme.breakpoints.smallTablet}) {
@@ -105,13 +105,13 @@ export const Footer = styled.footer`
 `;
 
 export const ShutdownButton = styled(styledComponents.Button)`
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 10px;
 
   img {
-    width: 25px;
     height: 25px;
+    width: 25px;
   }
 
   span {

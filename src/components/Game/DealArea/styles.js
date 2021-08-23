@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import ClickableCursor from '../../../assets/cursors/clickable.cur';
 
 export const DealArea = styled.div`
-  width: 110px;
-  height: 100%;
+  cursor: url(${ClickableCursor}), pointer;
   display: inline-flex;
   flex-direction: row-reverse;
-  cursor: url(${ClickableCursor}), pointer;
+  height: 100%;
+  width: 110px;
 
   .card {
     &:not(:last-child) {

@@ -21,6 +21,13 @@ const audios = {
   win: WinSound,
 };
 
+/*
+  ====================================================
+  Returns playable Audio objects of the given sound
+  Return value: Array
+  ====================================================
+*/
+
 export default function getSounds(...soundList) {
   const soundPlayFunctions = [];
 

@@ -20,36 +20,19 @@ const GameContextProvider = (props) => {
     deck9: {},
     deck10: {},
   });
-
   const [dealingDecks, setDealingDecks] = useState([]);
   const [isAnyDragging, setIsAnyDragging] = useState(false);
-  const [indicesOfSelectedCards, setIndicesOfSelectedCards] =
-    useState({
-      deckId: '',
-      items: [],
-    });
-
   const [gameStats, setGameStats] = useState({
     completedDeckCount: 0,
     score: 500,
     moves: 0,
   });
 
-  const [hint, setHint] = useState({});
-
   /*
   ====================================================
   ================== USE EFFECT ======================
   ====================================================
   */
-
-  useEffect(() => {
-    if (Object.keys(hint).length > 0) {
-      setTimeout(() => {
-        setHint({});
-      }, 1000);
-    }
-  }, [hint]);
 
   useEffect(() => {
     const [cDecks, dDecks] = getRandomDecks();
@@ -70,14 +53,10 @@ const GameContextProvider = (props) => {
         setCardDecks,
         isAnyDragging,
         setIsAnyDragging,
-        indicesOfSelectedCards,
-        setIndicesOfSelectedCards,
         dealingDecks,
         setDealingDecks,
         gameStats,
         setGameStats,
-        hint,
-        setHint,
       }}
     >
       {children}

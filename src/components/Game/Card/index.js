@@ -1,14 +1,23 @@
-import React, { useContext } from 'react';
+// Libraries
+import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+// Components | Utils
 import { cardImages } from '../../../utils/cardUtils';
 import getSounds from '../../../utils/soundUtils';
-import { GameContext } from '../../../contexts/GameContext';
+// Assets
 import * as Styled from './styles';
 
 const Card = (props) => {
-  const { index, deckNo, cardNo, isClose, isDragDisabled } = props;
-
-  const { indicesOfSelectedCards, hint } = useContext(GameContext);
+  const {
+    index,
+    deckNo,
+    cardNo,
+    isClose,
+    isDragDisabled,
+    isInSelectedCards,
+    isSourceInHint,
+    isDestinationInHint,
+  } = props;
 
   const [mouseDownSound] = getSounds('mouse-down');
 
@@ -17,13 +26,17 @@ const Card = (props) => {
     mouseDownSound.play();
   };
 
+  /*
+  ====================================================
+  ==================== FUNCTIONS =====================
+  ====================================================
+  */
+
   function getStyle(style, snapshot) {
     /* 
     This function overrides the default gliding behavior of the react-beautiful-dnd 
     package when the drag is above the other draggable object.
     */
-    const dId = `deck${deckNo}`;
-
     if (snapshot.isDropAnimating) {
       return {
         ...style,
@@ -37,10 +50,7 @@ const Card = (props) => {
       return style;
     }
 
-    if (
-      indicesOfSelectedCards.deckId === dId &&
-      indicesOfSelectedCards.items.includes(index)
-    ) {
+    if (isInSelectedCards) {
       return {
         ...style,
         display: 'none',
@@ -54,19 +64,16 @@ const Card = (props) => {
       // We ovveride the "translate(... px)" that performs the sliding behavior as "none".
       transform: 'none',
       filter:
-        (hint.sourceDeckId === dId &&
-          hint.sourceStartingIndex <= index) ||
-        (hint.destinationDeckId === dId &&
-          hint.destinationStartingIndex <= index)
-          ? 'invert(100%)'
-          : '',
-      transition:
-        hint.destinationDeckId === dId &&
-        hint.destinationStartingIndex <= index
-          ? 'filter 400ms 300ms'
-          : '',
+        isSourceInHint || isDestinationInHint ? 'invert(100%)' : '',
+      transition: isDestinationInHint ? 'filter 400ms 300ms' : '',
     };
   }
+
+  /*
+  ====================================================
+  ==================== RENDER ========================
+  ====================================================
+  */
 
   return deckNo ? (
     <Draggable

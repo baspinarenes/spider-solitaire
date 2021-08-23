@@ -1,6 +1,6 @@
-// Library
+// Libraries
 import styled from 'styled-components';
-// Assets
+// Components | Utils
 import { styledComponents } from '../../../globalStyles';
 
 export const Taskbar = styled.section`

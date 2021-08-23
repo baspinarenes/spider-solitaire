@@ -29,12 +29,12 @@ const WindowMenu = () => {
 
   const handleDealClick = () => {
     dealSound.play();
-    const [returnCardDecks, returnDealingDecks] = deal(
+    const [returnedCardDecks, returnDealingDecks] = deal(
       cardDecks,
       dealingDecks,
       cannotDealSound
     );
-    setCardDecks(returnCardDecks);
+    setCardDecks(returnedCardDecks);
     setDealingDecks(returnDealingDecks);
   };
 

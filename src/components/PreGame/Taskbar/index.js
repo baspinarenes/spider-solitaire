@@ -2,11 +2,11 @@
 import React, { useContext } from 'react';
 // Components | Utils
 import { DesktopContext } from '../../../contexts/DesktopContext';
+import Toolbar from '../Toolbar';
 // Assets
 import * as Styled from './styles';
 import XpStartButton from '../../../assets/images/winxp-start-button.webp';
 import SolitaireIcon from '../../../assets/images/solitaire-icon.webp';
-import Toolbar from '../Toolbar';
 
 const Taskbar = () => {
   const { isGameRunning } = useContext(DesktopContext);

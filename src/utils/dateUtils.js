@@ -1,3 +1,10 @@
+/*
+  ====================================================
+  Return time to be displayed in Taskbar
+  Return value: String
+  ====================================================
+*/
+
 export default function getTimeAsAMPM() {
   const date = new Date();
   let hours = date.getHours();

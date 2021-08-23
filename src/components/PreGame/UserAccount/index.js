@@ -1,17 +1,21 @@
+// Libraries
 import React, { useState, useContext } from 'react';
-
-import AccountImage from '../../../assets/images/account-image.webp';
-import * as Styled from './styles';
+// Components | Utils
 import { UserContext } from '../../../contexts/UserContext';
 import getSounds from '../../../utils/soundUtils';
+// Assets
+import * as Styled from './styles';
+import AccountImage from '../../../assets/images/account-image.webp';
 
 const UserAccount = (props) => {
   const { isGuest } = props;
+
   const { user, setUser, setIsUserSelected } =
     useContext(UserContext);
   const [usernameInputText, setUsernameInputText] = useState(
     user.username
   );
+
   const [openingSound] = getSounds('opening');
 
   /*
@@ -68,7 +72,7 @@ const UserAccount = (props) => {
         height="60"
       />
       {isGuest ? (
-        <span>Guesta</span>
+        <span>Guest</span>
       ) : (
         <input
           type="text"

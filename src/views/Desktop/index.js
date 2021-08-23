@@ -4,10 +4,10 @@ import React, { useContext } from 'react';
 import GameContextProvider from '../../contexts/GameContext';
 import { DesktopContext } from '../../contexts/DesktopContext';
 import SolitaireGame from '../SolitaireGame';
+import Program from '../../components/PreGame/Program';
 import Taskbar from '../../components/PreGame/Taskbar';
 // Assets
 import * as Styled from './styles';
-import Program from '../../components/PreGame/Program/index';
 
 const Desktop = () => {
   const { isGameRunning } = useContext(DesktopContext);

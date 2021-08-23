@@ -1,34 +1,41 @@
+// Libraries
 import React, { useContext } from 'react';
+// Components | Utils
+import { DesktopContext } from '../../../contexts/DesktopContext';
+import WindowMenu from '../WindowMenu';
+// Assets
 import * as Styled from './styles';
 import SolitaireIcon from '../../../assets/images/solitaire-icon.webp';
-import WindowMenu from '../WindowMenu';
-import { DesktopContext } from '../../../contexts/DesktopContext';
 
 const Window = (props) => {
-  const { children, title, isGameOverWindow, size, isGameFinished } =
-    props;
+  const { children, title } = props;
 
   const { setIsGameRunning } = useContext(DesktopContext);
 
-  const handleClose = () => {
+  /*
+  ====================================================
+  =================== HANDLER ========================
+  ====================================================
+  */
+
+  const handleCloseClick = () => {
     setIsGameRunning(false);
   };
 
-  return (
-    <Styled.Window
-      size={size}
-      isGameOverWindow={isGameOverWindow}
-      isGameFinished={isGameFinished}
-    >
-      <Styled.TitleBar>
-        {!isGameOverWindow && (
-          <img src={SolitaireIcon} alt="solitaire icon" />
-        )}
-        <span>{title}</span>
-        <Styled.CloseButton onClick={handleClose} />
-      </Styled.TitleBar>
-      {!isGameOverWindow && <WindowMenu />}
+  /*
+  ====================================================
+  ==================== RENDER ========================
+  ====================================================
+  */
 
+  return (
+    <Styled.Window>
+      <Styled.TitleBar>
+        <img src={SolitaireIcon} alt="solitaire icon" />
+        <span>{title}</span>
+        <Styled.CloseButton onClick={handleCloseClick} />
+      </Styled.TitleBar>
+      <WindowMenu />
       <Styled.WindowBody>{children}</Styled.WindowBody>
     </Styled.Window>
   );

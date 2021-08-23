@@ -16,9 +16,14 @@ const Toolbar = () => {
   */
 
   useEffect(() => {
-    setInterval(() => setTime(getTimeAsAMPM()), 30000);
+    const timeInterval = setInterval(
+      () => setTime(getTimeAsAMPM()),
+      30000
+    );
+    return () => {
+      clearInterval(timeInterval);
+    };
   }, []);
-
   /*
   ====================================================
   ==================== RENDER ========================

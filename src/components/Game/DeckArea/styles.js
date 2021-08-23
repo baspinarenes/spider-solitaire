@@ -1,11 +1,11 @@
-// Library
+// Libraries
 import styled from 'styled-components';
 
 export const DeckArea = styled.div`
   display: grid;
+  gap: 0.4vw;
   grid-template-columns: repeat(10, 1fr);
   justify-content: space-evenly;
-  gap: 0.4vw;
   padding: 0 0.9vw;
 
   .card {

@@ -1,13 +1,16 @@
 // Libraries
-import React from 'react';
+import React, { useContext } from 'react';
 // Components | Utils
+import { HintContext } from '../../../contexts/HintContext';
 import { getHint } from '../../../utils/cardUtils';
 import getSounds from '../../../utils/soundUtils';
 // Assets
 import * as Styled from './styles';
 
 const HintArea = (props) => {
-  const { setHint, cardDecks, gameStats, setGameStats } = props;
+  const { cardDecks, gameStats, setGameStats } = props;
+
+  const { setHint } = useContext(HintContext);
 
   const [hintSound, noHintSound] = getSounds('hint', 'no-hint');
 
@@ -17,7 +20,7 @@ const HintArea = (props) => {
   ====================================================
   */
 
-  const handleClickHint = () => {
+  const handleHintClick = () => {
     const hint = getHint(cardDecks);
 
     if (hint) {
@@ -45,7 +48,7 @@ const HintArea = (props) => {
   */
 
   return (
-    <Styled.HintArea onClick={handleClickHint}>
+    <Styled.HintArea onClick={handleHintClick}>
       <Styled.Hint>
         <span>Score:</span>
         <span>{gameStats.score}</span>

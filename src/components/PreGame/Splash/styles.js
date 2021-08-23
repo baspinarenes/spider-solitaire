@@ -1,6 +1,6 @@
 // Libraries
 import styled from 'styled-components';
-// Assets
+// Components | Utils
 import { styledComponents } from '../../../globalStyles';
 
 export const SplashScreen = styled(styledComponents.Screen)`
@@ -23,6 +23,7 @@ export const Logo = styled.img`
   margin-bottom: 70px;
   max-width: 300px;
   width: 50vw;
+  height: auto;
 `;
 
 export const Loader = styled.div`

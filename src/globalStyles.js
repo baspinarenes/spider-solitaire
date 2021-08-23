@@ -54,6 +54,7 @@ export const theme = {
     loginAccountInputBg: colors.transparent,
     loginAccountText: colors.white,
     loginAccountBorder$hover: colors.yellow,
+    windowBorder: colors.blue,
   },
 
   // GRADIENTS

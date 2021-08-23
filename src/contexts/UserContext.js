@@ -1,3 +1,4 @@
+// Libraries
 import React, { useState, useEffect, createContext } from 'react';
 
 export const UserContext = createContext();
@@ -8,7 +9,6 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState({
     username: '',
   });
-
   const [isUserSelected, setIsUserSelected] = useState(false);
 
   /*

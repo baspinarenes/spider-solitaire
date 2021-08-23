@@ -1,11 +1,19 @@
-import React from 'react';
+// Libraries
+import React, { useContext } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
+// Components | Utils
+import { DraggingContext } from '../../../contexts/DraggingContext';
+import { HintContext } from '../../../contexts/HintContext';
 import Card from '../Card/index';
 import { getIndexWhichNextCardsDraggable } from '../../../utils/cardUtils';
+// Assets
 import * as Styled from './styles';
 
 const Deck = (props) => {
   const { deckNo, deck } = props;
+
+  const { indicesOfSelectedCards } = useContext(DraggingContext);
+  const { hint } = useContext(HintContext);
 
   let indexWhichNextCardsDraggable;
 
@@ -13,6 +21,12 @@ const Deck = (props) => {
     indexWhichNextCardsDraggable =
       getIndexWhichNextCardsDraggable(deck);
   }
+
+  /*
+  ====================================================
+  ==================== RENDER ========================
+  ====================================================
+  */
 
   return (
     'cards' in deck && (
@@ -39,6 +53,21 @@ const Deck = (props) => {
                   isDragDisabled={
                     index < indexWhichNextCardsDraggable
                   }
+                  isInSelectedCards={
+                    indicesOfSelectedCards.deckId ===
+                      `deck${deckNo}` &&
+                    indicesOfSelectedCards.items
+                      .slice(1)
+                      .includes(index)
+                  }
+                  isDestinationInHint={
+                    hint.destinationDeckId === `deck${deckNo}` &&
+                    hint.destinationStartingIndex <= index
+                  }
+                  isSourceInHint={
+                    hint.sourceDeckId === `deck${deckNo}` &&
+                    hint.sourceStartingIndex <= index
+                  }
                 />
               );
             })}
@@ -50,20 +79,4 @@ const Deck = (props) => {
   );
 };
 
-function arraysEqual(a, b) {
-  if (a === b) return false;
-  if (a == null || b == null) return true;
-  if (a.length !== b.length) return true;
-
-  // If you don't care about the order of the elements inside
-  // the array, you should sort both arrays here.
-  // Please note that calling sort on an array will modify that array.
-  // you might want to clone your array first.
-
-  for (let i = 0; i < a.length; i += 1) {
-    if (a[i] !== b[i]) return true;
-  }
-  return false;
-}
-
-export default React.memo(Deck, arraysEqual);
+export default React.memo(Deck);

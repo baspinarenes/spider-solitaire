@@ -17,9 +17,13 @@ const Introduction = () => {
 
   // Adds fake loading scene
   useEffect(() => {
-    setTimeout(() => {
+    const splashTimeout = setTimeout(() => {
       setIsOnSplash(false);
     }, 2500);
+
+    return () => {
+      clearTimeout(splashTimeout);
+    };
   }, []);
 
   /*

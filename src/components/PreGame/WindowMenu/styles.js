@@ -1,4 +1,4 @@
-// Library
+// Libraries
 import styled from 'styled-components';
 // Assets
 import { styledComponents } from '../../../globalStyles';
@@ -10,8 +10,8 @@ export const Menu = styled.div`
 `;
 
 export const MenuItem = styled.div`
-  padding: 3px 5px;
   display: flex;
+  padding: 3px 5px;
   position: relative;
 
   &:hover {
@@ -28,9 +28,9 @@ export const MenuItem = styled.div`
 `;
 
 export const MenuButton = styled(styledComponents.Button)`
+  color: black;
   font-size: 11px;
   text-align: left;
-  color: black;
 
   :hover + div {
     display: flex;
@@ -38,24 +38,24 @@ export const MenuButton = styled(styledComponents.Button)`
 `;
 
 export const MenuContent = styled.div`
-  display: none;
-  position: absolute;
-  z-index: 5;
-  top: 20px;
-  left: 0;
   background-color: white;
   border: 1px solid gray;
-  width: 200px;
-  padding: 1px;
+  display: none;
   flex-direction: column;
+  left: 0;
+  padding: 1px;
+  position: absolute;
+  top: 20px;
+  width: 200px;
+  z-index: 5;
 `;
 
 export const SubMenuButton = styled(styledComponents.Button)`
   color: black;
-  padding: 2px 2px 4px 12px;
   font-size: 11px;
-  width: 100%;
+  padding: 2px 2px 4px 12px;
   text-align: left;
+  width: 100%;
 
   &:hover {
     background-color: #316ac5;
