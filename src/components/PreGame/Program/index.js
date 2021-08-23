@@ -27,6 +27,7 @@ const Program = () => {
 
   return (
     <Styled.Program
+      data-cy="spider-solitaire-program"
       onDoubleClick={handleProgramClick}
       onTouchStart={handleProgramClick}
     >

@@ -54,6 +54,7 @@ const UserAccount = (props) => {
 
   return (
     <Styled.UserAccount
+      data-cy={isGuest ? 'login-account' : 'login-account-guest'}
       $isGuest={isGuest}
       $isUsernameWritten={
         usernameInputText && usernameInputText !== 'Guest'

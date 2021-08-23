@@ -42,8 +42,8 @@ const DealArea = (props) => {
 
   return (
     <Styled.DealArea
+      data-cy="deal-area"
       onClick={dealingDecks.length ? handleDealClick : undefined}
-      id="deal-area"
       dealingDecksLength={dealingDecks.length}
     >
       {React.Children.toArray(

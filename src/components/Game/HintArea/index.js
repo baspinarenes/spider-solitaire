@@ -48,14 +48,14 @@ const HintArea = (props) => {
   */
 
   return (
-    <Styled.HintArea onClick={handleHintClick}>
+    <Styled.HintArea onClick={handleHintClick} data-cy="hint-area">
       <Styled.Hint>
         <span>Score:</span>
-        <span>{gameStats?.score}</span>
+        <span data-cy="score-span">{gameStats?.score}</span>
       </Styled.Hint>
       <Styled.Hint>
         <span>Moves:</span>
-        <span>{gameStats?.moves}</span>
+        <span data-cy="moves-span">{gameStats?.moves}</span>
       </Styled.Hint>
     </Styled.HintArea>
   );
