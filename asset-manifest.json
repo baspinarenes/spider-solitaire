@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/spider-solitaire/static/css/main.5b856273.chunk.css",
-    "main.js": "/spider-solitaire/static/js/main.81e0bfda.chunk.js",
-    "main.js.map": "/spider-solitaire/static/js/main.81e0bfda.chunk.js.map",
+    "main.css": "/spider-solitaire/static/css/main.6a77841d.chunk.css",
+    "main.js": "/spider-solitaire/static/js/main.7d930dd8.chunk.js",
+    "main.js.map": "/spider-solitaire/static/js/main.7d930dd8.chunk.js.map",
     "runtime-main.js": "/spider-solitaire/static/js/runtime-main.14b13dbc.js",
     "runtime-main.js.map": "/spider-solitaire/static/js/runtime-main.14b13dbc.js.map",
-    "static/js/2.eb277f48.chunk.js": "/spider-solitaire/static/js/2.eb277f48.chunk.js",
-    "static/js/2.eb277f48.chunk.js.map": "/spider-solitaire/static/js/2.eb277f48.chunk.js.map",
+    "static/js/2.0b5c273e.chunk.js": "/spider-solitaire/static/js/2.0b5c273e.chunk.js",
+    "static/js/2.0b5c273e.chunk.js.map": "/spider-solitaire/static/js/2.0b5c273e.chunk.js.map",
     "index.html": "/spider-solitaire/index.html",
-    "static/css/main.5b856273.chunk.css.map": "/spider-solitaire/static/css/main.5b856273.chunk.css.map",
-    "static/js/2.eb277f48.chunk.js.LICENSE.txt": "/spider-solitaire/static/js/2.eb277f48.chunk.js.LICENSE.txt",
+    "static/css/main.6a77841d.chunk.css.map": "/spider-solitaire/static/css/main.6a77841d.chunk.css.map",
+    "static/js/2.0b5c273e.chunk.js.LICENSE.txt": "/spider-solitaire/static/js/2.0b5c273e.chunk.js.LICENSE.txt",
     "static/media/1.9ff91e18.webp": "/spider-solitaire/static/media/1.9ff91e18.webp",
     "static/media/10.4f33b091.webp": "/spider-solitaire/static/media/10.4f33b091.webp",
     "static/media/11.4aaeca48.webp": "/spider-solitaire/static/media/11.4aaeca48.webp",
@@ -29,9 +29,9 @@
     "static/media/cannot-deal.c73ea08a.ogg": "/spider-solitaire/static/media/cannot-deal.c73ea08a.ogg",
     "static/media/card-back.205fe8c2.webp": "/spider-solitaire/static/media/card-back.205fe8c2.webp",
     "static/media/clickable.8631aaab.cur": "/spider-solitaire/static/media/clickable.8631aaab.cur",
-    "static/media/close-active.b81a989a.svg": "/spider-solitaire/static/media/close-active.b81a989a.svg",
-    "static/media/close-hover.e54cf595.svg": "/spider-solitaire/static/media/close-hover.e54cf595.svg",
-    "static/media/close.6957d44a.svg": "/spider-solitaire/static/media/close.6957d44a.svg",
+    "static/media/close-active.4f1a7f52.svg": "/spider-solitaire/static/media/close-active.4f1a7f52.svg",
+    "static/media/close-hover.ac0a6081.svg": "/spider-solitaire/static/media/close-hover.ac0a6081.svg",
+    "static/media/close.b5796a71.svg": "/spider-solitaire/static/media/close.b5796a71.svg",
     "static/media/deal.55b04c16.ogg": "/spider-solitaire/static/media/deal.55b04c16.ogg",
     "static/media/hint.a3cb1791.ogg": "/spider-solitaire/static/media/hint.a3cb1791.ogg",
     "static/media/microsoft-logo.63a04c35.webp": "/spider-solitaire/static/media/microsoft-logo.63a04c35.webp",
@@ -51,8 +51,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.14b13dbc.js",
-    "static/js/2.eb277f48.chunk.js",
-    "static/css/main.5b856273.chunk.css",
-    "static/js/main.81e0bfda.chunk.js"
+    "static/js/2.0b5c273e.chunk.js",
+    "static/css/main.6a77841d.chunk.css",
+    "static/js/main.7d930dd8.chunk.js"
   ]
 }
