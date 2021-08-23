@@ -215,7 +215,7 @@ export const styledComponents = {
     border: 0;
     color: white;
 
-    &:hover {
+    &:not(:disabled):hover {
       cursor: url(${ClickableCursor}), auto;
     }
   `,

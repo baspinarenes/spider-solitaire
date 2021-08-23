@@ -43,6 +43,7 @@ const DealArea = (props) => {
   return (
     <Styled.DealArea
       onClick={dealingDecks.length ? handleDealClick : undefined}
+      dealingDecksLength={dealingDecks.length}
     >
       {React.Children.toArray(
         Array(dealingDecks.length).fill(<Card isClose />)

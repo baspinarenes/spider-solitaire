@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import ClickableCursor from '../../../assets/cursors/clickable.cur';
 
 export const DealArea = styled.div`
-  cursor: url(${ClickableCursor}), pointer;
+  cursor: ${(props) =>
+    props.dealingDecksLength > 0 &&
+    `url(${ClickableCursor}), pointer`};
   display: inline-flex;
   flex-direction: row-reverse;
   height: 100%;

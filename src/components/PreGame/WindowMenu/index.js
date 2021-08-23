@@ -66,7 +66,10 @@ const WindowMenu = () => {
         </Styled.MenuContent>
       </Styled.MenuItem>
       <Styled.MenuItem>
-        <Styled.MenuButton onClick={handleDealClick}>
+        <Styled.MenuButton
+          onClick={handleDealClick}
+          disabled={dealingDecks.length === 0}
+        >
           Deal!
         </Styled.MenuButton>
       </Styled.MenuItem>
