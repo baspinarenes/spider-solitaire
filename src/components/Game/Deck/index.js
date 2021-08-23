@@ -38,7 +38,7 @@ const Deck = (props) => {
             deckLength={deck.cards.length}
           >
             <Styled.Placeholder>
-              <svg viewBox="0 0 71 96" />
+              <svg data-testid="deneme" viewBox="0 0 71 96" />
             </Styled.Placeholder>
             {deck.cards.map((value, index) => {
               return (

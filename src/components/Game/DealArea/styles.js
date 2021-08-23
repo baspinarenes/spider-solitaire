@@ -27,3 +27,5 @@ export const DealArea = styled.div`
     }
   }
 `;
+
+DealArea.displayName = 'DealArea';

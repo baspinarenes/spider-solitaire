@@ -69,8 +69,8 @@ const GameOver = (props) => {
           <p>
             Congratulations {user.username}!
             <br />
-            You won with {gameStats.score} points in {gameStats.moves}{' '}
-            moves.
+            You won with {gameStats?.score} points in{' '}
+            {gameStats?.moves} moves.
           </p>
           <p> Do you want to start another game?</p>
           <Styled.YesButton onClick={handleNewGameClick}>

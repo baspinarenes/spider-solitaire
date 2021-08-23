@@ -36,7 +36,7 @@ export const cardImages = {
   13: CardImage13,
 };
 
-const cardNo = {
+export const cardNo = {
   back: 0,
   ace: 1,
   two: 2,
@@ -53,7 +53,7 @@ const cardNo = {
   king: 13,
 };
 
-const cardCounts = {
+export const cardCounts = {
   ace: 8,
   two: 8,
   three: 8,
@@ -76,8 +76,8 @@ const cardCounts = {
   ====================================================
 */
 
-export const getCardNo = (type) => {
-  return cardNo[type];
+export const getCardNo = (name) => {
+  return cardNo[name];
 };
 
 /*
@@ -104,7 +104,7 @@ export const shuffle = (array) => {
   ====================================================
 */
 
-const checkCompletedDeck = (cards) => {
+export const checkCompletedDeck = (cards) => {
   const completedDeck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
   return cards.join().includes(completedDeck.join());
 };
@@ -382,17 +382,15 @@ export const getHint = (cardDecks) => {
         // a : the first card of the deck to be dragged must match the last card of destination
         // b : the parent of the child deck to be dragged must be the same as the parent of the destination
         // c : the deck containing the sub-deck to be dragged must be shorter than the destination deck
+
+        // Note: The reason I use ".slice(-1)[0]" to get the last element is because .at() in JEST throws an error.
         if (
-          (sourceDeck.cards
-            .slice(subSourceDeckStartingIndex)
-            .at(0) ===
-            destinationDeck.cards.at(-1) + 1 &&
-            sourceDeck.cards.at(subSourceDeckStartingIndex - 1) !==
-              destinationDeck.cards.at(-1)) ||
-          (sourceDeck.cards
-            .slice(subSourceDeckStartingIndex)
-            .at(0) ===
-            destinationDeck.cards.at(-1) + 1 &&
+          (sourceDeck.cards.slice(subSourceDeckStartingIndex)[0] ===
+            destinationDeck.cards.slice(-1)[0] + 1 &&
+            sourceDeck.cards[subSourceDeckStartingIndex - 1] !==
+              destinationDeck.cards.slice(-1)[0]) ||
+          (sourceDeck.cards.slice(subSourceDeckStartingIndex)[0] ===
+            destinationDeck.cards.slice(-1)[0] + 1 &&
             destinationDeck.cards.length > subSourceDeckStartingIndex)
         ) {
           hints.push({
