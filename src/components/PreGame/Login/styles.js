@@ -52,7 +52,8 @@ export const MainLeft = styled.section`
   }
 
   img {
-    width: 200px;
+    width: 205px;
+    height: auto;
   }
 
   span {

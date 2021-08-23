@@ -3,9 +3,9 @@ import styled from 'styled-components';
 // Components | Utils
 import { styledComponents } from '../../../globalStyles';
 // Assets
-import CloseSVG from '../../../assets/images/close.svg';
-import CloseHoverSVG from '../../../assets/images/close-hover.svg';
-import CloseActiveSVG from '../../../assets/images/close-active.svg';
+import CloseSVG from '../../../assets/images/close.webp';
+import CloseHoverSVG from '../../../assets/images/close-hover.webp';
+import CloseActiveSVG from '../../../assets/images/close-active.webp';
 
 export const Window = styled.div`
   background-color: ${(props) => props.theme.colors.xpWindowBg};
@@ -33,6 +33,7 @@ export const TitleBar = styled.div`
 export const CloseButton = styled(styledComponents.Button)`
   background-image: url(${CloseSVG});
   background-repeat: no-repeat;
+  background-size: contain;
   height: 23px;
   margin-left: auto;
   width: 23px;

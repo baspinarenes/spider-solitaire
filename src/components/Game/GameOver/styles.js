@@ -3,9 +3,9 @@ import styled from 'styled-components';
 // Components | Utils
 import { styledComponents } from '../../../globalStyles';
 // Assets
-import CloseSVG from '../../../assets/images/close.svg';
-import CloseHoverSVG from '../../../assets/images/close-hover.svg';
-import CloseActiveSVG from '../../../assets/images/close-active.svg';
+import Close from '../../../assets/images/close.webp';
+import CloseHover from '../../../assets/images/close-hover.webp';
+import CloseActive from '../../../assets/images/close-active.webp';
 
 export const WinScreen = styled.div`
   animation: ${(props) => props.theme.keyFrames.colorChange} 10s
@@ -55,18 +55,19 @@ export const TitleBar = styled.div`
 `;
 
 export const CloseButton = styled(styledComponents.Button)`
-  background-image: url(${CloseSVG});
+  background-image: url(${Close});
   background-repeat: no-repeat;
+  background-size: cover;
   height: 16px;
   margin-left: auto;
   width: 16px;
 
   &:hover {
-    background-image: url(${CloseHoverSVG});
+    background-image: url(${CloseHover});
   }
 
   &:not(:disabled):active {
-    background-image: url(${CloseActiveSVG});
+    background-image: url(${CloseActive});
   }
 `;
 
