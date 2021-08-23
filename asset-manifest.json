@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spider-solitaire/static/css/main.6a77841d.chunk.css",
-    "main.js": "/spider-solitaire/static/js/main.50f8833a.chunk.js",
-    "main.js.map": "/spider-solitaire/static/js/main.50f8833a.chunk.js.map",
+    "main.js": "/spider-solitaire/static/js/main.87a1e756.chunk.js",
+    "main.js.map": "/spider-solitaire/static/js/main.87a1e756.chunk.js.map",
     "runtime-main.js": "/spider-solitaire/static/js/runtime-main.14b13dbc.js",
     "runtime-main.js.map": "/spider-solitaire/static/js/runtime-main.14b13dbc.js.map",
     "static/js/2.0b5c273e.chunk.js": "/spider-solitaire/static/js/2.0b5c273e.chunk.js",
@@ -34,6 +34,7 @@
     "static/media/close.b5796a71.svg": "/spider-solitaire/static/media/close.b5796a71.svg",
     "static/media/deal.55b04c16.ogg": "/spider-solitaire/static/media/deal.55b04c16.ogg",
     "static/media/hint.a3cb1791.ogg": "/spider-solitaire/static/media/hint.a3cb1791.ogg",
+    "static/media/login-logo.eb4729f1.webp": "/spider-solitaire/static/media/login-logo.eb4729f1.webp",
     "static/media/microsoft-logo.63a04c35.webp": "/spider-solitaire/static/media/microsoft-logo.63a04c35.webp",
     "static/media/mouse-down.76ee1488.ogg": "/spider-solitaire/static/media/mouse-down.76ee1488.ogg",
     "static/media/mouse-up.f3d8384f.ogg": "/spider-solitaire/static/media/mouse-up.f3d8384f.ogg",
@@ -45,7 +46,6 @@
     "static/media/solitaire-icon.949145f2.webp": "/spider-solitaire/static/media/solitaire-icon.949145f2.webp",
     "static/media/win.6c8a4ec5.ogg": "/spider-solitaire/static/media/win.6c8a4ec5.ogg",
     "static/media/winxp-logo.9dee7f33.webp": "/spider-solitaire/static/media/winxp-logo.9dee7f33.webp",
-    "static/media/winxp-logo2.928167b6.webp": "/spider-solitaire/static/media/winxp-logo2.928167b6.webp",
     "static/media/winxp-shutdown.5a2ac0c4.webp": "/spider-solitaire/static/media/winxp-shutdown.5a2ac0c4.webp",
     "static/media/winxp-start-button.5316ea67.webp": "/spider-solitaire/static/media/winxp-start-button.5316ea67.webp"
   },
@@ -53,6 +53,6 @@
     "static/js/runtime-main.14b13dbc.js",
     "static/js/2.0b5c273e.chunk.js",
     "static/css/main.6a77841d.chunk.css",
-    "static/js/main.50f8833a.chunk.js"
+    "static/js/main.87a1e756.chunk.js"
   ]
 }
