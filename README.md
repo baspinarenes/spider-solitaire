@@ -2,9 +2,17 @@
 
 This project is the graduation project of Trendyol Frontend bootcamp. Flexible design is adopted. The game has been made using reusable components, following the principles of clean code. For tests, Jest (unit) and Cypress (e2e) were used. For automatic deployment, Github Actions and CI/CD were used.
 
-## Live
+Live: [Github Page](https://enesbaspinar.me/spider-solitaire/) | [Heroku](https://legend-spider-solitaire.herokuapp.com/)
 
-[Github Page](https://enesbaspinar.me/spider-solitaire/) | [Heroku](https://legend-spider-solitaire.herokuapp.com/)
+## Technologies
+
+- React
+- ESLint - Prettier - Airbnb
+- Styled Components
+- React Beautiful Dnd
+- Jest
+- Testing Library
+- Cypress
 
 ## Installation
 
@@ -22,6 +30,22 @@ In the project directory you can run the following lines:
 npm install
 npm start
 ```
+
+## Test Project
+
+To run unit tests you can run the following lines:
+
+```console
+npm run test:coverage
+```
+
+To run E2E tests you can run the following lines:
+
+```console
+npm run cypress:open
+```
+
+
 
 ## How To Play
 
