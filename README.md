@@ -1,6 +1,6 @@
 # Spider Solitaire
 
-Legendary spider solitaire game with Windows XP theme! This project is the graduation project of Trendyol Frontend bootcamp. Flexible design is adopted. The game has been made using reusable components, following the principles of clean code. For tests, Jest (unit) and Cypress (e2e) were used. For automatic deployment, Github Actions and CI/CD were used.
+This project is the graduation project of Trendyol Frontend bootcamp. Flexible design is adopted. The game has been made using reusable components, following the principles of clean code. For tests, Jest (unit) and Cypress (e2e) were used. For automatic deployment, Github Actions and CI/CD were used.
 
 ## Live
 
