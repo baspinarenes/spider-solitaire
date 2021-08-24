@@ -34,10 +34,10 @@ npm start
 
 ## Screenshots
 
-![](./readme/intro.png)
-![](./readme/login.png)
-![](./readme/desktop.png)
-![](./readme/game-starting.png)
-![](./readme/completed-decks.png)
-![](./readme/hint.png)
-![](./readme/won.png)
+![](./readme/intro.webp)
+![](./readme/login.webp)
+![](./readme/desktop.webp)
+![](./readme/game-starting.webp)
+![](./readme/completed-decks.webp)
+![](./readme/hint.webp)
+![](./readme/won.webp)
