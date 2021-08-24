@@ -1,5 +1,7 @@
 # Spider Solitaire
 
+It's being written...
+
 ## Live
 
 [Github Page](https://enesbaspinar.me/spider-solitaire/) | [Heroku](https://legend-spider-solitaire.herokuapp.com/)
