@@ -1,4 +1,4 @@
-# Spider Solitaire
+# Legend Spider Solitaire
 
 ![](./readme/game-starting.webp)
 
