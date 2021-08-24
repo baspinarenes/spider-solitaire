@@ -7,8 +7,7 @@
     "plugin:react/recommended",
     "airbnb",
     "prettier",
-    "plugin:jest/recommended",
-    "plugin:cypress/recommended"
+    "plugin:jest/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -18,7 +17,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "jest", "cypress"],
+  "plugins": ["react", "prettier", "jest"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -34,11 +33,6 @@
     "arrow-body-style": 0,
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": 0,
-    "react/no-array-index-key": 0,
-    "cypress/no-assigning-return-values": "error",
-    "cypress/no-unnecessary-waiting": "error",
-    "cypress/assertion-before-screenshot": "warn",
-    "cypress/no-force": "warn",
-    "cypress/no-async-tests": "error"
+    "react/no-array-index-key": 0
   }
 }
