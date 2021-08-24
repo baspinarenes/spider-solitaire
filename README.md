@@ -65,3 +65,7 @@ npm run cypress:open
 ![](./readme/completed-decks.webp)
 ![](./readme/hint.webp)
 ![](./readme/won.webp)
+
+## License
+
+Distributed under the Creative Commons Zero. See `LICENSE` for more information.
